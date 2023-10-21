@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <style>
+    #seven { filter: saturate(50%) }
+  </style>
+  <polyline id="seven" points="12,6 36,6 20,44" stroke="red" stroke-width="10" fill="none" />
+</svg>

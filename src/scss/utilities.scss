@@ -1,0 +1,45 @@
+.d-overlap {
+  display: grid;
+
+  > * {
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.ls-tight {
+  letter-spacing: -1px;
+}
+
+.pa-lt {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.pa-lb {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.pa-rt {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.pa-rb {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}

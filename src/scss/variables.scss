@@ -1,0 +1,104 @@
+:root,
+[data-bs-theme="light"] {
+  --input-placeholder-color: #cccccc;
+  --border-radius: 0.2rem;
+  --scrollbar-track-color: #f1f1f1;
+  --scrollbar-thumb-color: silver;
+}
+
+// Bootstrap variables
+
+$font-size-base: 0.9rem;
+
+$spacer: 0.5rem;
+$grid-gutter-width: 1rem;
+$border-radius: var(--border-radius);
+$btn-white-space: nowrap;
+
+$navbar-padding-y: 0;
+$nav-link-padding-y: 0.3rem;
+$nav-link-padding-x: 0.6rem;
+$navbar-nav-link-padding-x: $nav-link-padding-x;
+
+$dropdown-header-padding-y: 0.2rem;
+
+$input-btn-padding-y: 0.2rem;
+$input-btn-padding-x: 0.4rem;
+$input-placeholder-color: var(--input-placeholder-color);
+// $input-btn-focus-width: 0;
+
+$form-check-input-border-radius: var(--border-radius);
+
+$list-group-color: var(--bs-body-color);
+$list-group-bg: var(--bs-body-bg);
+
+$modal-header-padding-y: $spacer;
+$modal-header-padding-x: 1rem;
+$modal-content-border-radius: $border-radius;
+$modal-content-border-width: 0px;
+$modal-header-border-width: 0px;
+// $modal-footer-margin-between: 0;
+
+.modal-body {
+  --bs-modal-padding: #{$modal-header-padding-y} #{$modal-header-padding-x};
+}
+
+$alert-padding-x: 1rem;
+$alert-border-width: 0px;
+$alert-margin-bottom: 0px;
+
+$accordion-padding-x: 0.9rem;
+$accordion-padding-y: 0.8rem;
+
+$mark-padding: 0;
+$mark-bg: "yellow";
+
+$table-cell-padding-x-sm: 0.4rem;
+
+// Dark theme styles
+
+[data-bs-theme="dark"] {
+  --input-placeholder-color: #5b5b5b;
+  --scrollbar-track-color: #444;
+  --scrollbar-thumb-color: #686868;
+}
+
+// Utilities
+
+$utilities: (
+  "font-size-absolute": (
+    property: font-size,
+    class: fs,
+    values: (
+      xxl: xx-large,
+      xl: x-large,
+      lg: large,
+      md: medium,
+      sm: small,
+      xs: x-small,
+      xxs: xx-small,
+    ),
+  ),
+  "font-size-relative": (
+    property: font-size,
+    class: fs,
+    values: smaller larger,
+  ),
+  "justify-items": (
+    property: justify-items,
+    values: start end center stretch,
+  ),
+  "place-items": (
+    property: place-items,
+    values: (
+      center: center,
+      center-stretch: center stretch,
+    ),
+  ),
+  "cursor": (
+    property: cursor,
+    values: (
+      pointer: pointer,
+    ),
+  ),
+);

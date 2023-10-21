@@ -1,0 +1,71 @@
+@import "./variables";
+@import "bootstrap";
+
+// Form Control
+
+.form-control {
+  &::placeholder {
+    font-size: 0.9em;
+    opacity: 0.75;
+  }
+}
+
+// Nav
+
+.nav-link {
+  svg {
+    font-size: 1rem;
+  }
+}
+
+// Modal
+
+.custom-dialog {
+  @include media-breakpoint-up(sm) {
+    width: 90vw;
+    max-width: 800px;
+  }
+}
+
+// Accordion
+
+.shrinky.accordion-header {
+  .accordion-button::after {
+    @include media-breakpoint-up(md) {
+      --bs-accordion-btn-icon: none;
+    }
+  }
+}
+
+// List group
+
+.list-group-item.active,
+.list-group-item:hover {
+  .list-group-item {
+    color: inherit;
+    border-color: inherit;
+    background-color: inherit;
+  }
+}
+
+// Scrollbar
+
+.thin-scrollbar {
+  scrollbar-width: thin;
+}
+.thin-scrollbar::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+.thin-scrollbar::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track-color);
+  border-radius: 10px;
+}
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-color);
+  border-radius: 10px;
+}
+.thin-scrollbar::-webkit-scrollbar-corner,
+.thin-scrollbar::-webkit-resizer {
+  visibility: hidden;
+}

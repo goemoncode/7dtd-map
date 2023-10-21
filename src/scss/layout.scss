@@ -1,0 +1,53 @@
+$header-height: 3rem;
+$sidebar-width: 400px;
+
+:root {
+  --bd-layout-header-height: #{$header-height};
+  --bd-layout-sidebar-width: #{$sidebar-width};
+}
+
+body {
+  overflow: hidden;
+}
+
+header {
+  .navbar {
+    height: $header-height;
+    z-index: 10;
+
+    @include media-breakpoint-up(md) {
+      --bs-bg-opacity: 0.75;
+    }
+  }
+}
+
+[data-view-mode="terrain"] {
+  header {
+    .navbar {
+      z-index: 0;
+    }
+  }
+}
+
+.bd-sidebar {
+  grid-area: sidebar;
+  z-index: 1;
+
+  @include media-breakpoint-up(md) {
+    position: fixed;
+    top: $header-height;
+    right: 0;
+    width: $sidebar-width;
+    max-height: calc(100vh - $header-height);
+    overflow-y: auto;
+
+    &:has(.shrinky.accordion-header) {
+      width: auto;
+      transform: translateX(30%);
+    }
+  }
+}
+
+.bd-main {
+  grid-area: main;
+}
