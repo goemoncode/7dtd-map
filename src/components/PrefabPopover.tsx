@@ -4,6 +4,7 @@ import { MatchedPrefab } from '../worker/lib/PrefabsFilter';
 import { FailSafeImage } from './shared/FailSafeImage';
 import { DifficultyBanner } from './shared/DifficultyBanner';
 import { Distance } from './shared/Distance';
+import { LoadingSpinner } from './shared/LoadingSpinner';
 
 interface Props extends Omit<PopoverProps, 'onClick'> {
   prefab: MatchedPrefab;
@@ -25,12 +26,14 @@ export function PrefabPopover({ prefab, onClick, onClose }: Props) {
         <a
           href={`/prefab/#` + prefab.name}
           target="_blank"
+          className="prefab-image"
           onClick={(event) => {
             event.preventDefault();
             onClick?.(prefab);
           }}
         >
-          <FailSafeImage className="prefab-image" src={prefab.url + '.jpg'} />
+          <LoadingSpinner variant="light" className="z-n1 bg-secondary" />
+          <FailSafeImage src={prefab.url + '.jpg'} draggable="false" />
         </a>
         <Stack direction="horizontal" className="p-2 pe-none align-items-start">
           <DifficultyBanner difficulty={prefab.difficulty} className="me-auto" />

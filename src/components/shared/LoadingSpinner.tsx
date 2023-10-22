@@ -6,10 +6,10 @@ interface Props extends SpinnerProps {
   children?: string;
 }
 
-export function LoadingSpinner({ fullscreen, animation = 'grow', className, children = 'Loading...', ...props }: Props) {
+export function LoadingSpinner({ fullscreen, animation = 'grow', size, variant, className, children = 'Loading...', ...props }: Props) {
   return (
     <div className={clsx(className, 'overlay d-grid place-items-center', { 'position-fixed': fullscreen })} {...props}>
-      <Spinner animation={animation} role="status">
+      <Spinner animation={animation} size={size} variant={variant} role="status">
         <span className="visually-hidden">{children}</span>
       </Spinner>
     </div>

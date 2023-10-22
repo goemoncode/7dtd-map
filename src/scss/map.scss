@@ -86,8 +86,7 @@
       .popover {
         position: absolute;
         top: 6px;
-        left: -140px;
-        width: 280px;
+        transform: translateX(-50%);
         --bs-popover-max-width: none;
       }
 
@@ -96,11 +95,6 @@
         left: 50%;
         bottom: 0;
         transform: translate(-50%, 1px);
-      }
-
-      .prefab-image {
-        object-fit: contain;
-        width: 100%;
       }
     }
   }
@@ -254,4 +248,16 @@
 
 [data-map-state="loading"] {
   cursor: wait;
+}
+
+.prefab-image {
+  position: relative;
+  width: 280px;
+  height: 210px;
+
+  img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+  }
 }

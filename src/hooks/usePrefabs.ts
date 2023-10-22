@@ -85,11 +85,10 @@ export function usePrefabInfo(prefabName?: string) {
   return data;
 }
 
-export function usePrefabXml(prefab?: PrefabInfo | null) {
+export function usePrefabXml(prefab: PrefabInfo) {
   const { data } = useQuery({
-    queryKey: ['prefab/xml', prefab?.name ?? ''],
+    queryKey: ['prefab/xml', prefab.name],
     queryFn: async () => {
-      if (!prefab) return null;
       try {
         const url = prefab.url + '.xml';
         const xmlText = await fetch(url).then((res) => res.text());
@@ -140,7 +139,9 @@ export function useLocalization(lang: Language) {
   return data;
 }
 
-export function useLabelMapper() {
+export type LabelMapper = (key: string) => string | undefined;
+
+export function useLabelMapper(): LabelMapper {
   const language = useAppSelector(selectLanguage);
   const current = useLocalization(language);
   const fallback = useLocalization(FALLBACK_LANGUAGE);

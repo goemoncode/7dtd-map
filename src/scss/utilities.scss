@@ -2,6 +2,7 @@
   display: grid;
 
   > * {
+    position: relative;
     grid-column: 1;
     grid-row: 1;
   }
@@ -14,6 +15,10 @@
   right: 0;
   bottom: 0;
   overflow: hidden;
+}
+
+.outline-none {
+  outline: none;
 }
 
 .ls-tight {
