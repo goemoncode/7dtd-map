@@ -118,7 +118,7 @@ export function HowToUseModal() {
               )}
             </Overlay>
           </Tab>
-          <Tab eventKey="extended" title="Extended Usage">
+          <Tab eventKey="advanced" title="Advanced Usage">
             <Form noValidate validated={isSubmitSuccessful} onSubmit={handleSubmit(handleApply)}>
               <p>Specify the URL of a site that provides the following files for additional prefabs.</p>
               <ul>
