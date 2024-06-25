@@ -152,6 +152,12 @@ export function HowToUseModal() {
                   {errors.url?.message}
                 </Form.Control.Feedback>
               </InputGroup>
+              <div className="d-flex align-items-center justify-content-between">
+                <p>Or, Reload again vanilla data and additional data on the URL.</p>
+                <Button type="button" style={{ width: '4rem' }} onClick={handleReload}>
+                  Reset
+                </Button>
+              </div>
             </Form>
           </Tab>
         </Tabs>
@@ -178,8 +184,15 @@ export function HowToUseModal() {
       reset({ url });
       alert('Restart the app to reset all prefabs data.');
       location.hash = '#reset';
+      location.reload();
     } catch (err) {
       setError('url', { message: err instanceof Error ? err.message : String(err) });
     }
+  }
+
+  function handleReload() {
+    alert('Restart the app to reset all prefabs data.');
+    location.hash = '#reset';
+    location.reload();
   }
 }
