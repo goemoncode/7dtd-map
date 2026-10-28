@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { Alert, Button, Form, InputGroup, Modal, Overlay, Spinner, Tab, Tabs, Tooltip } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { useAppDispatch, useAppSelector } from '../store';
-import { selectHowToUseVisible, setHowToUseVisible } from '../store/session';
-import { fetchTest, getAdditionalPrefabsUrl, setAdditionalPrefabsUrl } from '../hooks/usePrefabs';
-import { selectHasVisitedBefore, setHasVisitedBefore } from '../store/local';
+import { useAppDispatch, useAppSelector } from '../store/index.ts';
+import { selectHowToUseVisible, setHowToUseVisible } from '../store/session.ts';
+import { fetchTest, getAdditionalPrefabsUrl, setAdditionalPrefabsUrl } from '../hooks/usePrefabs.ts';
+import { selectHasVisitedBefore, setHasVisitedBefore } from '../store/local.ts';
 
 interface FormValues {
   url?: string;
@@ -69,8 +69,7 @@ export function HowToUseModal() {
                   title="Copy this path"
                   data-copy-for="generated_world_path_windows"
                   onClick={handleCopy}
-                  onBlur={() => setTooltipShow(false)}
-                >
+                  onBlur={() => setTooltipShow(false)}>
                   📋️
                 </Button>
               </li>
@@ -100,8 +99,7 @@ export function HowToUseModal() {
                       title="Copy this path"
                       data-copy-for="bundled_world_path_windows"
                       onClick={handleCopy}
-                      onBlur={() => setTooltipShow(false)}
-                    >
+                      onBlur={() => setTooltipShow(false)}>
                       📋️
                     </Button>
                   </li>

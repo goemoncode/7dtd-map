@@ -1,10 +1,10 @@
 import { Button } from 'react-bootstrap';
 import { BsFillCameraFill } from 'react-icons/bs';
 import { useLiveQuery } from 'dexie-react-hooks';
-import { useAppSelector } from '../store';
-import { selectMapId } from '../store/map';
-import { db } from '../store/db';
-import { useMapView } from '../hooks/useMapView';
+import { useAppSelector } from '../store/index.ts';
+import { selectMapId } from '../store/map.ts';
+import { db } from '../store/db/index.ts';
+import { useMapView } from '../hooks/useMapView.ts';
 
 interface Props {
   disabled?: boolean;

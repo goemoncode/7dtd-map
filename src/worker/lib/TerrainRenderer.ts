@@ -1,7 +1,7 @@
 import * as three from 'three';
-import { threePlaneSize, waitAnimationFrame } from '../../utils';
-import CameraController from './CameraController';
-import type { WorkerEventArgs } from '../mapRenderer';
+import { threePlaneSize, waitAnimationFrame } from '../../utils/index.ts';
+import CameraController from './CameraController.ts';
+import type { WorkerEventArgs } from '../mapRenderer.ts';
 
 export type TerrainViewStatus = 'busy' | 'ready' | null;
 

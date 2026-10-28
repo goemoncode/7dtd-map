@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import { MapDecoration } from '../utils/parsePrefabsXml';
+import { MapDecoration } from '../utils/parsePrefabsXml.ts';
 
 export interface MapViewHandle {
   canvas: HTMLCanvasElement | null;

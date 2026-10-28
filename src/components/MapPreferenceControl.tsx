@@ -1,11 +1,11 @@
 import { shallowEqual } from 'react-redux';
 import { Button, Form } from 'react-bootstrap';
 import { BsArrowCounterclockwise } from 'react-icons/bs';
-import { useAppDispatch, useAppSelector } from '../store';
-import { selectMapPreference, setMapPreference, setMapPreferenceToDefault } from '../store/map';
-import { rangeInputSettings } from '../utils/MapPreference';
-import { FormGroupRow } from './shared/FormGroupRow';
-import { RangeInput } from './shared/RangeInput';
+import { useAppDispatch, useAppSelector } from '../store/index.ts';
+import { selectMapPreference, setMapPreference, setMapPreferenceToDefault } from '../store/map.ts';
+import { rangeInputSettings } from '../utils/MapPreference.ts';
+import { FormGroupRow } from './shared/FormGroupRow.tsx';
+import { RangeInput } from './shared/RangeInput.tsx';
 
 interface Props {
   disabled?: boolean;

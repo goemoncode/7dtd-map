@@ -1,6 +1,6 @@
-import { FilterFunction, PrefabFilter } from '.';
-import { GameCoords, calcDist } from '../../../utils';
-import { MapDecoration } from '../../../utils/parsePrefabsXml';
+import { FilterFunction, PrefabFilter } from './index.ts';
+import { calcDist, GameCoords } from '../../../utils/index.ts';
+import { MapDecoration } from '../../../utils/parsePrefabsXml.ts';
 
 export class DistanceFilter implements PrefabFilter {
   constructor(private marker: GameCoords | null) {}

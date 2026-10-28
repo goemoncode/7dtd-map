@@ -3,11 +3,11 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import storageSession from 'redux-persist/lib/storage/session';
-import sessionModule, { blacklist as sessionModuleBlacklist } from './session';
-import localModule from './local';
-import mapModule, { blacklist as mapModuleBlacklist } from './map';
-import prefabsModule from './prefabs';
-import presetsModule from './presets';
+import sessionModule, { blacklist as sessionModuleBlacklist } from './session.ts';
+import localModule from './local.ts';
+import mapModule, { blacklist as mapModuleBlacklist } from './map.ts';
+import prefabsModule from './prefabs.ts';
+import presetsModule from './presets.ts';
 
 const rootReducer = combineReducers({
   [sessionModule.name]: persistReducer(

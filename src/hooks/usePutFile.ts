@@ -1,15 +1,15 @@
 import { useCallback } from 'react';
-import { useAppSelector } from '../store';
-import { selectMapId } from '../store/map';
-import { MapLargeObjects, db } from '../store/db';
-import { waitAnimationFrame } from '../utils';
-import { Dtm } from '../utils/Dtm';
-import { Png } from '../worker/proxies/Png';
-import { imageBitmapToPngBlob, isPngBlob } from '../utils/PngBlob';
-import { ImageBitmapLoader } from '../utils/ImageBitmapLoader';
-import { parseMapInfoXml } from '../utils/parseMapInfoXml';
-import { parsePrefabsXml } from '../utils/parsePrefabsXml';
-import { parseSpawnPointsXml } from '../utils/parseSpawnPointsXml';
+import { useAppSelector } from '../store/index.ts';
+import { selectMapId } from '../store/map.ts';
+import { db, MapLargeObjects } from '../store/db/index.ts';
+import { waitAnimationFrame } from '../utils/index.ts';
+import { Dtm } from '../utils/Dtm.ts';
+import { Png } from '../worker/proxies/Png.ts';
+import { imageBitmapToPngBlob, isPngBlob } from '../utils/PngBlob.ts';
+import { ImageBitmapLoader } from '../utils/ImageBitmapLoader.ts';
+import { parseMapInfoXml } from '../utils/parseMapInfoXml.ts';
+import { parsePrefabsXml } from '../utils/parsePrefabsXml.ts';
+import { parseSpawnPointsXml } from '../utils/parseSpawnPointsXml.ts';
 
 export function usePutFile(): (file: File) => Promise<MapLargeObjects> {
   const mapId = useAppSelector(selectMapId);

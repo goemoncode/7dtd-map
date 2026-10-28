@@ -1,6 +1,6 @@
 import { Button, Dropdown, DropdownButton, Form, FormControlProps, InputGroup, Stack } from 'react-bootstrap';
 import { BsFillGearFill } from 'react-icons/bs';
-import { ClearButton } from './ClearButton';
+import { ClearButton } from './ClearButton.tsx';
 
 interface Props extends Omit<FormControlProps, 'onSelect'>, PresetDropdownProps {
   onClear: () => void;

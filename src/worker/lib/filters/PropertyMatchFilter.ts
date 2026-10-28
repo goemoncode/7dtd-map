@@ -1,12 +1,15 @@
-import { FilterFunction, PrefabFilter, createRegExp } from '.';
-import { MapDecoration } from '../../../utils/parsePrefabsXml';
-import { FilterConditions } from '../PrefabsFilter';
-import { PrefabPropertiesAwaiter } from '.';
+import { createRegExp, FilterFunction, PrefabFilter } from './index.ts';
+import { MapDecoration } from '../../../utils/parsePrefabsXml.ts';
+import { FilterConditions } from '../PrefabsFilter.ts';
+import { PrefabPropertiesAwaiter } from './index.ts';
 
 const allMatch = () => true;
 
 export class PropertyMatchFilter implements PrefabFilter {
-  constructor(private cond: FilterConditions, private propertiesAwaiter: PrefabPropertiesAwaiter) {}
+  constructor(
+    private cond: FilterConditions,
+    private propertiesAwaiter: PrefabPropertiesAwaiter
+  ) {}
 
   async createFilter(): Promise<FilterFunction> {
     const properties = await this.propertiesAwaiter;

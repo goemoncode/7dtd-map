@@ -1,10 +1,10 @@
 import { Badge, CloseButton, Popover, PopoverProps, Stack } from 'react-bootstrap';
 import { BsGeoAltFill } from 'react-icons/bs';
-import { MatchedPrefab } from '../worker/lib/PrefabsFilter';
-import { FailSafeImage } from './shared/FailSafeImage';
-import { DifficultyBanner } from './shared/DifficultyBanner';
-import { Distance } from './shared/Distance';
-import { LoadingSpinner } from './shared/LoadingSpinner';
+import { MatchedPrefab } from '../worker/lib/PrefabsFilter.ts';
+import { FailSafeImage } from './shared/FailSafeImage.tsx';
+import { DifficultyBanner } from './shared/DifficultyBanner.tsx';
+import { Distance } from './shared/Distance.tsx';
+import { LoadingSpinner } from './shared/LoadingSpinner.tsx';
 
 interface Props extends Omit<PopoverProps, 'onClick'> {
   prefab: MatchedPrefab;
@@ -30,8 +30,7 @@ export function PrefabPopover({ prefab, onClick, onClose }: Props) {
           onClick={(event) => {
             event.preventDefault();
             onClick?.(prefab);
-          }}
-        >
+          }}>
           <LoadingSpinner variant="light" className="z-n1 bg-secondary" />
           <FailSafeImage src={prefab.url + '.jpg'} draggable="false" />
         </a>

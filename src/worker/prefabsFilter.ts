@@ -1,7 +1,7 @@
-import { db } from '../store/db';
-import { Language } from '../utils/language';
-import { LabelHolder } from './lib/LabelHolder';
-import { PrefabsFilter, PrefabsFilterRequest } from './lib/PrefabsFilter';
+import { db } from '../store/db/index.ts';
+import { Language } from '../utils/language.ts';
+import { LabelHolder } from './lib/LabelHolder.ts';
+import { PrefabsFilter, PrefabsFilterRequest } from './lib/PrefabsFilter.ts';
 
 async function fetchPrefabProperties() {
   const prefabs = await db.Prefabs.toArray();

@@ -1,7 +1,7 @@
-import Dexie, { Table } from 'dexie';
-import { shallowEqualLeft } from '../../utils';
-import { Localization, MapLargeObject, MapLargeObjectType, MapLargeObjects, MapMetadata, PrefabInfo } from './types';
-export * from './types';
+import { Dexie, Table } from 'dexie';
+import { shallowEqualLeft } from '../../utils/index.ts';
+import { Localization, MapLargeObject, MapLargeObjects, MapLargeObjectType, MapMetadata, PrefabInfo } from './types.ts';
+export * from './types.ts';
 
 export const DATABASE_NAME = '7dtd-map';
 export const DEFAULT_WORLD_NAME = 'New World';

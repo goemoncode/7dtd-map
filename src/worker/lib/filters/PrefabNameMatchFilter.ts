@@ -1,10 +1,13 @@
-import { FilterFunction, PrefabFilter, createRegExp, isMatch } from '.';
-import { MapDecoration } from '../../../utils/parsePrefabsXml';
-import { LabelHolder } from '../LabelHolder';
-import { MatchedPrefab } from '../PrefabsFilter';
+import { createRegExp, FilterFunction, isMatch, PrefabFilter } from './index.ts';
+import { MapDecoration } from '../../../utils/parsePrefabsXml.ts';
+import { LabelHolder } from '../LabelHolder.ts';
+import { MatchedPrefab } from '../PrefabsFilter.ts';
 
 export class PrefabNameMatchFilter implements PrefabFilter {
-  constructor(private prefabName: string, private labels: LabelHolder) {}
+  constructor(
+    private prefabName: string,
+    private labels: LabelHolder
+  ) {}
 
   async createFilter(): Promise<FilterFunction> {
     const mapper = await this.labels.getMapper();

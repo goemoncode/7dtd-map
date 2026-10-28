@@ -1,9 +1,8 @@
-import MapStatsUpdater from '../mapStatsUpdater?worker';
-import { MapMetadata } from '../../store/db';
-import { lazy } from '.';
+import { MapMetadata } from '../../store/db/index.ts';
+import { lazy } from './index.ts';
 
 class MapStatsUpdaterProxy {
-  private worker = lazy(MapStatsUpdater);
+  private worker = lazy(() => new Worker(new URL('../mapStatsUpdater.ts', import.meta.url), { type: 'module' }));
 
   update(mapId: number) {
     this.worker.value.postMessage(mapId);

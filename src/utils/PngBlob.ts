@@ -1,4 +1,4 @@
-import { requireNonnull } from '.';
+import { requireNonnull } from './index.ts';
 
 export interface PngBlob extends Blob {
   type: 'image/png';

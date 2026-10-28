@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../store';
-import { selectMapId } from '../store/map';
-import { setHowToUseVisible } from '../store/session';
-import { useLoading } from '../hooks/useLoading';
-import { usePutFileList } from '../hooks/usePutFile';
-import { mapRenderer, mapStatsUpdater, prefabsFilter } from '../worker/proxies';
+import { useAppDispatch, useAppSelector } from '../store/index.ts';
+import { selectMapId } from '../store/map.ts';
+import { setHowToUseVisible } from '../store/session.ts';
+import { useLoading } from '../hooks/useLoading.ts';
+import { usePutFileList } from '../hooks/usePutFile.ts';
+import { mapRenderer, mapStatsUpdater, prefabsFilter } from '../worker/proxies/index.ts';
 
 export function DragDropOverlay() {
   const dispatch = useAppDispatch();

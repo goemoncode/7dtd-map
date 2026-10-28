@@ -1,11 +1,11 @@
 import { Dropdown, DropdownButton, Form, InputGroup } from 'react-bootstrap';
 import clsx from 'clsx';
-import { useAppSelector } from '../store';
-import { selectMapId } from '../store/map';
-import { db } from '../store/db';
-import { useLoading } from '../hooks/useLoading';
-import { usePutFileList } from '../hooks/usePutFile';
-import { mapRenderer, mapStatsUpdater, prefabsFilter } from '../worker/proxies';
+import { useAppSelector } from '../store/index.ts';
+import { selectMapId } from '../store/map.ts';
+import { db } from '../store/db/index.ts';
+import { useLoading } from '../hooks/useLoading.ts';
+import { usePutFileList } from '../hooks/usePutFile.ts';
+import { mapRenderer, mapStatsUpdater, prefabsFilter } from '../worker/proxies/index.ts';
 
 const PRESET_MAPS = ['Navezgane']; //, 'PREGEN6k', 'PREGEN8k', 'PREGEN10k'];
 const PRESET_MAP_FILES = [

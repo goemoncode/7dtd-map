@@ -1,9 +1,8 @@
-import PrefabsFilter from '../prefabsFilter?worker';
-import type { PrefabsFilterResult, PrefabsFilterRequest } from '../lib/PrefabsFilter';
-import { lazy } from '.';
+import type { PrefabsFilterRequest, PrefabsFilterResult } from '../lib/PrefabsFilter.ts';
+import { lazy } from './index.ts';
 
 class PrefabsFilterProxy {
-  private worker = lazy(PrefabsFilter);
+  private worker = lazy(() => new Worker(new URL('../prefabsFilter.ts', import.meta.url), { type: 'module' }));
 
   update(request: PrefabsFilterRequest) {
     this.worker.value.postMessage(request);

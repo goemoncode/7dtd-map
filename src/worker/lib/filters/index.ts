@@ -1,11 +1,11 @@
-import { PrefabInfo } from '../../../store/db';
-import { MapDecoration } from '../../../utils/parsePrefabsXml';
-import { MatchedPrefab } from '../PrefabsFilter';
+import { PrefabInfo } from '../../../store/db/index.ts';
+import { MapDecoration } from '../../../utils/parsePrefabsXml.ts';
+import { MatchedPrefab } from '../PrefabsFilter.ts';
 
-export * from './PropertyMatchFilter';
-export * from './PrefabNameMatchFilter';
-export * from './BlockNameMatchFilter';
-export * from './DistanceFilter';
+export * from './PropertyMatchFilter.ts';
+export * from './PrefabNameMatchFilter.ts';
+export * from './BlockNameMatchFilter.ts';
+export * from './DistanceFilter.ts';
 
 export type FilterFunction = (prefab: MapDecoration) => MatchedPrefab | null;
 

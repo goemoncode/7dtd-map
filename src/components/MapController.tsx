@@ -1,17 +1,17 @@
 import { Accordion, Button, Spinner } from 'react-bootstrap';
 import { BsFillDatabaseFill, BsFillFlagFill, BsFillGearFill } from 'react-icons/bs';
-import { useAppDispatch, useAppSelector } from '../store';
-import { sidebarMenuTabs, selectActiveTab, setActiveTab } from '../store/session';
-import { selectIsLoading, selectTerrainViewStatus, setIsTerrainViewOpen } from '../store/map';
-import { useMapSize } from '../hooks/useMaps';
-import { ShrinkyAccordionHeader } from './shared/ShrinkyAccordionHeader';
-import { FormGroupRow } from './shared/FormGroupRow';
-import { MapSelectControl } from './MapSelectControl';
-import { MapLoadControl } from './MapLoadControl';
-import { MapCaptureControl } from './MapCaptureControl';
-import { MapPreferenceControl } from './MapPreferenceControl';
-import { PrefabsFilterControl } from './PrefabsFilterControl';
-import { PrefabsList } from './PrefabsList';
+import { useAppDispatch, useAppSelector } from '../store/index.ts';
+import { selectActiveTab, setActiveTab, sidebarMenuTabs } from '../store/session.ts';
+import { selectIsLoading, selectTerrainViewStatus, setIsTerrainViewOpen } from '../store/map.ts';
+import { useMapSize } from '../hooks/useMaps.ts';
+import { ShrinkyAccordionHeader } from './shared/ShrinkyAccordionHeader.tsx';
+import { FormGroupRow } from './shared/FormGroupRow.tsx';
+import { MapSelectControl } from './MapSelectControl.tsx';
+import { MapLoadControl } from './MapLoadControl.tsx';
+import { MapCaptureControl } from './MapCaptureControl.tsx';
+import { MapPreferenceControl } from './MapPreferenceControl.tsx';
+import { PrefabsFilterControl } from './PrefabsFilterControl.tsx';
+import { PrefabsList } from './PrefabsList.tsx';
 import TerrainSvg from '../assets/terrain.svg?react';
 
 export function MapController() {
@@ -40,8 +40,7 @@ export function MapController() {
               className="w-100"
               disabled={isLoading || !mapSize || !(terrainViewStatus === 'ready')}
               onClick={() => dispatch(setIsTerrainViewOpen(true))}
-              data-terrain-view-status={terrainViewStatus}
-            >
+              data-terrain-view-status={terrainViewStatus}>
               {terrainViewStatus === 'busy' && <Spinner as="span" animation="border" size="sm" role="status" className="me-3" />}
               {terrainViewStatus !== 'busy' && <TerrainSvg className="me-3" />}
               Open Terrain View

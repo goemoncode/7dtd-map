@@ -1,15 +1,15 @@
-import { useRef, Suspense } from 'react';
+import { Suspense, useRef } from 'react';
 import { Nav, Offcanvas, Stack, Tab, Table } from 'react-bootstrap';
 import { useLiveQuery } from 'dexie-react-hooks';
-import { useAppDispatch, useAppSelector } from '../store';
-import { prefabOffcanvasTabs, selectActiveTab, setActiveTab } from '../store/prefabs';
-import { PrefabInfo, db } from '../store/db';
-import { LabelMapper, useLabelMapper, usePrefabXml } from '../hooks/usePrefabs';
-import { UseModalProps } from '../hooks/useModal';
-import { MatchedPrefab } from '../worker/lib/PrefabsFilter';
-import { FailSafeImage } from './shared/FailSafeImage';
-import { DifficultyBanner } from './shared/DifficultyBanner';
-import { LoadingSpinner } from './shared/LoadingSpinner';
+import { useAppDispatch, useAppSelector } from '../store/index.ts';
+import { prefabOffcanvasTabs, selectActiveTab, setActiveTab } from '../store/prefabs.ts';
+import { db, PrefabInfo } from '../store/db/index.ts';
+import { LabelMapper, useLabelMapper, usePrefabXml } from '../hooks/usePrefabs.ts';
+import { UseModalProps } from '../hooks/useModal.ts';
+import { MatchedPrefab } from '../worker/lib/PrefabsFilter.ts';
+import { FailSafeImage } from './shared/FailSafeImage.tsx';
+import { DifficultyBanner } from './shared/DifficultyBanner.tsx';
+import { LoadingSpinner } from './shared/LoadingSpinner.tsx';
 
 interface Props extends UseModalProps {
   prefab?: MatchedPrefab;

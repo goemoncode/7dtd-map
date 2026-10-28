@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { AppState } from '.';
-import { Language, resolveLang } from '../utils/language';
+import type { AppState } from './index.ts';
+import { Language, resolveLang } from '../utils/language.ts';
 
 type State = {
   theme?: 'light' | 'dark';

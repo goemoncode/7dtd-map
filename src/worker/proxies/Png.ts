@@ -1,5 +1,4 @@
-import PngParser from '../pngParser?worker';
-import type { PngJsReturn } from '../pngParser';
+import type { PngJsReturn } from '../pngParser.ts';
 
 export class Png implements PngJsReturn {
   width!: number;
@@ -8,7 +7,7 @@ export class Png implements PngJsReturn {
 
   static async loadFrom(blob: Blob): Promise<Png> {
     const buffer = await blob.arrayBuffer();
-    const worker = new PngParser();
+    const worker = new Worker(new URL('../pngParser.ts', import.meta.url), { type: 'module' });
     worker.postMessage(buffer, [buffer]);
     const event: MessageEvent<PngJsReturn> = await new Promise((resolve, reject) => {
       worker.onmessage = resolve;

@@ -1,19 +1,19 @@
-import { GameCoords, shallowEqualLeft, shallowEqualLeftStrict } from '../../utils';
-import { Language } from '../../utils/language';
-import { MapDecoration } from '../../utils/parsePrefabsXml';
-import { throttledInvoker } from '../../utils/throttledInvoker';
-import { PrefabInfo } from '../../store/db';
-import { LabelHolder } from './LabelHolder';
+import { GameCoords, shallowEqualLeft, shallowEqualLeftStrict } from '../../utils/index.ts';
+import { Language } from '../../utils/language.ts';
+import { MapDecoration } from '../../utils/parsePrefabsXml.ts';
+import { throttledInvoker } from '../../utils/throttledInvoker.ts';
+import { PrefabInfo } from '../../store/db/index.ts';
+import { LabelHolder } from './LabelHolder.ts';
 import {
   BlockNameMatchFilter as BlocksUsedMatchFilter,
-  PropertyMatchFilter,
+  BlockPrefabIndex,
+  BlockPrefabIndexAwaiter,
   DistanceFilter,
   PrefabNameMatchFilter,
   PrefabPropertiesAwaiter,
-  BlockPrefabIndex,
-  BlockPrefabIndexAwaiter,
+  PropertyMatchFilter,
   RegExpMatch,
-} from './filters';
+} from './filters/index.ts';
 
 export interface MatchedPrefab extends MapDecoration, Omit<Partial<PrefabInfo>, 'name'> {
   centerCoords?: { x: number; z: number };
@@ -69,7 +69,10 @@ export class PrefabsFilter implements FilterConditions {
   private listeners: PrefabsFilterUpdateListener[] = [];
   private blockPrefabIndex: BlockPrefabIndexAwaiter;
 
-  constructor(private prefabProperties: PrefabPropertiesAwaiter, private labels: LabelHolder) {
+  constructor(
+    private prefabProperties: PrefabPropertiesAwaiter,
+    private labels: LabelHolder
+  ) {
     this.blockPrefabIndex = buildBlockPrefabIndex(prefabProperties);
   }
 

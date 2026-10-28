@@ -1,4 +1,4 @@
-import { RegExpMatch } from '../../worker/lib/filters';
+import { RegExpMatch } from '../../worker/lib/filters/index.ts';
 
 interface Props {
   text: string;

@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
-import { useAppDispatch } from '../store';
-import { setIsLoading } from '../store/map';
-import { waitAnimationFrame } from '../utils';
+import { useAppDispatch } from '../store/index.ts';
+import { setIsLoading } from '../store/map.ts';
+import { waitAnimationFrame } from '../utils/index.ts';
 
 export function useLoading() {
   const dispatch = useAppDispatch();

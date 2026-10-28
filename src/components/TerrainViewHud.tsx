@@ -1,6 +1,6 @@
 import { Form } from 'react-bootstrap';
-import { useAppDispatch, useAppSelector } from '../store';
-import { selectHudTipsVisible, setHudTipsVisible } from '../store/map';
+import { useAppDispatch, useAppSelector } from '../store/index.ts';
+import { selectHudTipsVisible, setHudTipsVisible } from '../store/map.ts';
 import { BsArrowsMove, BsBoxArrowRight, BsZoomIn } from 'react-icons/bs';
 import AngleSvg from '../assets/angle.svg?react';
 

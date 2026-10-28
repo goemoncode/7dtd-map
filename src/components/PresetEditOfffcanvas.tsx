@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Button, Dropdown, DropdownButton, Form, InputGroup, Offcanvas, Stack } from 'react-bootstrap';
 import { BsArrowCounterclockwise, BsFillGearFill, BsPlusLg, BsTrash3 } from 'react-icons/bs';
 import { useFieldArray, useForm } from 'react-hook-form';
-import { UseModalProps } from '../hooks/useModal';
+import { UseModalProps } from '../hooks/useModal.ts';
 
 interface Props extends UseModalProps {
   title?: string;

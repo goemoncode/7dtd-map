@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { AppState } from '.';
-import { GameCoords } from '../utils';
-import { MatchedPrefab, PrefabsFilterResult } from '../worker/lib/PrefabsFilter';
+import type { AppState } from './index.ts';
+import { GameCoords } from '../utils/index.ts';
+import { MatchedPrefab, PrefabsFilterResult } from '../worker/lib/PrefabsFilter.ts';
 
 export const prefabOffcanvasTabs = ['properties', 'blocks-used'] as const;
 

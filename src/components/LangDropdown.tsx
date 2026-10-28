@@ -1,8 +1,8 @@
 import { NavDropdown } from 'react-bootstrap';
-import { useAppDispatch, useAppSelector } from '../store';
-import { selectLanguage, setLanguage } from '../store/local';
-import { Languages } from '../utils/language';
-import { DropdownCheckItem } from './shared/DropdownCheckItem';
+import { useAppDispatch, useAppSelector } from '../store/index.ts';
+import { selectLanguage, setLanguage } from '../store/local.ts';
+import { Languages } from '../utils/language.ts';
+import { DropdownCheckItem } from './shared/DropdownCheckItem.tsx';
 
 export function LangDropdown() {
   const dispatch = useAppDispatch();

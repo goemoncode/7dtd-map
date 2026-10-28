@@ -1,4 +1,4 @@
-@import "scss/base";
-@import "scss/utilities";
-@import "scss/layout";
-@import "scss/map";
+@use "scss/base" as *;
+@use "scss/utilities" as *;
+@use "scss/layout" as *;
+@use "scss/map" as *;

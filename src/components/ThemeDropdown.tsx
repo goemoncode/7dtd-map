@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { NavDropdown } from 'react-bootstrap';
-import { BsSunFill, BsMoonStarsFill, BsCircleHalf } from 'react-icons/bs';
-import { useAppDispatch, useAppSelector } from '../store';
-import { AppTheme, selectTheme, setTheme, updateTheme } from '../store/local';
-import { DropdownCheckItem } from './shared/DropdownCheckItem';
+import { BsCircleHalf, BsMoonStarsFill, BsSunFill } from 'react-icons/bs';
+import { useAppDispatch, useAppSelector } from '../store/index.ts';
+import { AppTheme, selectTheme, setTheme, updateTheme } from '../store/local.ts';
+import { DropdownCheckItem } from './shared/DropdownCheckItem.tsx';
 
 export function ThemeDropdown() {
   const dispatch = useAppDispatch();
@@ -23,8 +23,7 @@ export function ThemeDropdown() {
         </span>
       }
       className="d-flex align-items-center"
-      align="end"
-    >
+      align="end">
       <DropdownCheckItem icon={<BsCircleHalf className="me-4" />} checked={!theme} onClick={() => changeTheme(undefined)}>
         Auto
       </DropdownCheckItem>

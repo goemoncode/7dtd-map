@@ -1,9 +1,9 @@
 import { Nav } from 'react-bootstrap';
 import { BsGithub, BsQuestionCircleFill } from 'react-icons/bs';
-import { useAppDispatch } from '../store';
-import { setHowToUseVisible } from '../store/session';
-import { LangDropdown } from './LangDropdown';
-import { ThemeDropdown } from './ThemeDropdown';
+import { useAppDispatch } from '../store/index.ts';
+import { setHowToUseVisible } from '../store/session.ts';
+import { LangDropdown } from './LangDropdown.tsx';
+import { ThemeDropdown } from './ThemeDropdown.tsx';
 import clsx from 'clsx';
 
 interface Props {

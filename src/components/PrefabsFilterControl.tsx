@@ -1,20 +1,20 @@
 import { useEffect } from 'react';
 import { shallowEqual } from 'react-redux';
 import { Form, Stack } from 'react-bootstrap';
-import { useAppDispatch, useAppSelector } from '../store';
+import { useAppDispatch, useAppSelector } from '../store/index.ts';
 import {
   selectBlocksUsedFilter,
   selectCursorCoords,
   selectDifficultyFilter,
-  selectPrefabTagsFilter,
   selectMarkerCoords,
   selectPrefabNameFilter,
+  selectPrefabTagsFilter,
   setBlocksUsedFilter,
   setDifficultyFilter,
-  setPrefabTagsFilter,
   setMarkerCoords,
   setPrefabNameFilter,
-} from '../store/prefabs';
+  setPrefabTagsFilter,
+} from '../store/prefabs.ts';
 import {
   resetBlocksUsedFilterPresetsToDefault,
   resetPrefabNameFilterPresetsToDefault,
@@ -25,13 +25,13 @@ import {
   setBlocksUsedFilterPresets,
   setPrefabNameFilterPresets,
   setPrefabTagsFilterPresets,
-} from '../store/presets';
-import { useModal } from '../hooks/useModal';
-import { FormGroupRow } from './shared/FormGroupRow';
-import { CoordsAndElevation } from './shared/CoordsAndElevation';
-import { PresetComboBox } from './shared/PresetComboBox';
-import { ClearButton } from './shared/ClearButton';
-import { PresetEditOffcanvas } from './PresetEditOfffcanvas';
+} from '../store/presets.ts';
+import { useModal } from '../hooks/useModal.ts';
+import { FormGroupRow } from './shared/FormGroupRow.tsx';
+import { CoordsAndElevation } from './shared/CoordsAndElevation.tsx';
+import { PresetComboBox } from './shared/PresetComboBox.tsx';
+import { ClearButton } from './shared/ClearButton.tsx';
+import { PresetEditOffcanvas } from './PresetEditOfffcanvas.tsx';
 
 interface Props {
   disabled?: boolean;
@@ -48,7 +48,11 @@ export function PrefabsFilterControl({ disabled }: Props) {
   const prefabNameFilterPresets = useAppSelector(selectPrefabNameFilterPresets);
   const prefabTagsFilterPresets = useAppSelector(selectPrefabTagsFilterPresets);
   const blocksUsedFilterPresets = useAppSelector(selectBlocksUsedFilterPresets);
-  const [offcanvasProps, showOffcanvas, updateOffcanvas] = useModal(PresetEditOffcanvas, {});
+  // モーダルのプロパティ型を明示してコールバック引数の型推論を有効化
+  const [offcanvasProps, showOffcanvas, updateOffcanvas] = useModal<React.ComponentProps<typeof PresetEditOffcanvas>>(
+    PresetEditOffcanvas,
+    {}
+  );
 
   useEffect(() => updateOffcanvas({ values: prefabNameFilterPresets }), [prefabNameFilterPresets, updateOffcanvas]);
   useEffect(() => updateOffcanvas({ values: blocksUsedFilterPresets }), [blocksUsedFilterPresets, updateOffcanvas]);

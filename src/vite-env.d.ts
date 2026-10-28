@@ -6,10 +6,10 @@ declare module 'pngjs/browser' {
 }
 
 interface ImportMetaEnv {
-  readonly VITE_PREFABS_URL: string
-  readonly VITE_WORLDS_URL: string
+  readonly VITE_PREFABS_URL: string;
+  readonly VITE_WORLDS_URL: string;
 }
 
 interface ImportMeta {
-  readonly env: ImportMetaEnv
+  readonly env: ImportMetaEnv;
 }

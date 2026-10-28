@@ -1,0 +1,15 @@
+{
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "bracketSameLine": true,
+  "htmlWhitespaceSensitivity": "ignore",
+  "embeddedLanguageFormatting": "off",
+  "overrides": [
+    {
+      "files": "*.scss",
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ]
+}

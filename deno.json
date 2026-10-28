@@ -1,0 +1,93 @@
+{
+  "nodeModulesDir": "auto",
+  "tasks": {
+    "dev": "deno run -A --node-modules-dir=auto npm:vite",
+    "build": "deno task check && deno run -A --node-modules-dir=auto npm:vite build",
+    "preview": "deno run -A --node-modules-dir=auto npm:vite preview",
+    "lint": "deno lint",
+    "fmt": "deno fmt",
+    "fmt:prettier": "deno run -A npm:prettier --write src/",
+    "check": "deno check src/main.tsx vite.config.ts src/worker/mapRenderer.ts src/worker/mapStatsUpdater.ts src/worker/pngParser.ts src/worker/prefabsFilter.ts"
+  },
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "webworker"
+    ],
+    "types": [
+      "./src/vite-env.d.ts"
+    ],
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  },
+  "lint": {
+    "rules": {
+      "tags": [
+        "recommended"
+      ],
+      "exclude": [
+        "no-window",
+        "no-window-prefix",
+        "no-explicit-any",
+        "require-await",
+        "no-empty-interface",
+        "no-unused-vars"
+      ]
+    }
+  },
+  "fmt": {
+    "singleQuote": true
+  },
+  "include": [
+    "src/"
+  ],
+  "exclude": [
+    "node_modules/",
+    "dist/"
+  ],
+  "imports": {
+    "react": "npm:react@^18.2.0",
+    "react/": "npm:/react@^18.2.0/",
+    "react-dom": "npm:react-dom@^18.2.0",
+    "react-dom/": "npm:/react-dom@^18.2.0/",
+    "react-dom/client": "npm:react-dom@^18.2.0/client",
+    "@reduxjs/toolkit": "npm:@reduxjs/toolkit@^1.9.7",
+    "react-redux": "npm:react-redux@^8.1.3",
+    "redux-persist": "npm:redux-persist@^6.0.0",
+    "redux-persist/": "npm:/redux-persist@^6.0.0/",
+    "@tanstack/react-query": "npm:@tanstack/react-query@^5.0.0",
+    "dexie": "npm:dexie@^3.2.4",
+    "dexie-react-hooks": "npm:dexie-react-hooks@^1.1.6",
+    "bootstrap": "npm:bootstrap@^5.3.2",
+    "bootstrap/": "npm:/bootstrap@^5.3.2/",
+    "react-bootstrap": "npm:react-bootstrap@^2.9.0",
+    "react-bootstrap/": "npm:/react-bootstrap@^2.9.0/",
+    "react-error-boundary": "npm:react-error-boundary@^4.0.11",
+    "react-hook-form": "npm:react-hook-form@^7.47.0",
+    "react-icons/": "npm:/react-icons@^4.11.0/",
+    "react-use": "npm:react-use@^17.4.0",
+    "@react-spring/web": "npm:@react-spring/web@^9.7.3",
+    "@use-gesture/react": "npm:@use-gesture/react@^10.3.0",
+    "three": "npm:three@^0.157.0",
+    "three/": "npm:/three@^0.157.0/",
+    "pngjs": "npm:pngjs@^7.0.0",
+    "pngjs/": "npm:/pngjs@^7.0.0/",
+    "bignumber.js": "npm:bignumber.js@^9.1.2",
+    "clsx": "npm:clsx@^2.0.0",
+    "vite": "npm:vite@^4.5.0",
+    "@vitejs/plugin-react": "npm:@vitejs/plugin-react@^4.1.0",
+    "vite-plugin-svgr": "npm:vite-plugin-svgr@^4.1.0",
+    "sass": "npm:sass@^1.69.4",
+    "typescript": "npm:typescript@^5.2.2",
+    "@types/react": "npm:@types/react@^18.2.30",
+    "@types/react-dom": "npm:@types/react-dom@^18.2.14",
+    "@types/three": "npm:@types/three@^0.157.2",
+    "@types/node": "npm:@types/node@^20.8.7",
+    "@types/pngjs": "npm:@types/pngjs@^6.0.3"
+  }
+}

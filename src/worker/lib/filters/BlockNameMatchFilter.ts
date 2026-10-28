@@ -1,14 +1,18 @@
-import { FilterFunction, PrefabFilter, createRegExp, isMatch } from '.';
-import { LabelHolder } from '../LabelHolder';
-import { MathcedBlock } from '../PrefabsFilter';
-import { BlockPrefabIndexAwaiter } from '.';
+import { createRegExp, FilterFunction, isMatch, PrefabFilter } from './index.ts';
+import { LabelHolder } from '../LabelHolder.ts';
+import { MathcedBlock } from '../PrefabsFilter.ts';
+import { BlockPrefabIndexAwaiter } from './index.ts';
 
 type MatchedPrefabBlocks = {
   [name: string]: MathcedBlock[];
 };
 
 export class BlockNameMatchFilter implements PrefabFilter {
-  constructor(private blockName: string, private labels: LabelHolder, private indexAwaiter: BlockPrefabIndexAwaiter) {}
+  constructor(
+    private blockName: string,
+    private labels: LabelHolder,
+    private indexAwaiter: BlockPrefabIndexAwaiter
+  ) {}
 
   async createFilter(): Promise<FilterFunction> {
     const regex = this.blockName.length ? createRegExp(this.blockName) : null;

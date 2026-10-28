@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import { BsPlusLg, BsTrash3 } from 'react-icons/bs';
 import { useLiveQuery } from 'dexie-react-hooks';
-import { useAppDispatch, useAppSelector } from '../store';
-import { selectMapId, setMapId } from '../store/map';
-import { db } from '../store/db';
+import { useAppDispatch, useAppSelector } from '../store/index.ts';
+import { selectMapId, setMapId } from '../store/map.ts';
+import { db } from '../store/db/index.ts';
 
 interface Props {
   disabled?: boolean;

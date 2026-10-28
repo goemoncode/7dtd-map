@@ -1,10 +1,10 @@
 import { useCallback, useState } from 'react';
-import { ContextMenuProps } from '../components/shared/ContextMenu';
+import { ContextMenuProps } from '../components/shared/ContextMenu.tsx';
 
 export function useContextMenu<T extends HTMLElement>(): [
   props: ContextMenuProps<T>,
   handleContextMenu: (event: React.MouseEvent<T>) => void,
-  handleMenuClick: (onClick: () => void) => () => void
+  handleMenuClick: (onClick: () => void) => () => void,
 ] {
   const [props, setProps] = useState<ContextMenuProps<T>>({ show: false });
 

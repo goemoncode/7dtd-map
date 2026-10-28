@@ -1,7 +1,7 @@
 import * as three from 'three';
-import { gameMapSize, requireNonnull, threePlaneSize } from '../../utils';
-import { TerrainRenderer } from './TerrainRenderer';
-import type { WorkerEventArgs } from '../mapRenderer';
+import { gameMapSize, requireNonnull, threePlaneSize } from '../../utils/index.ts';
+import { TerrainRenderer } from './TerrainRenderer.ts';
+import type { WorkerEventArgs } from '../mapRenderer.ts';
 
 const MOUSE_BUTTON_BITMASK = {
   left: 0b00000001,

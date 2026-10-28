@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { AppState } from '.';
-import { MapPreference, defaultPreference } from '../utils/MapPreference';
-import { TerrainViewStatus } from '../worker/lib/TerrainRenderer';
+import type { AppState } from './index.ts';
+import { defaultPreference, MapPreference } from '../utils/MapPreference.ts';
+import { TerrainViewStatus } from '../worker/lib/TerrainRenderer.ts';
 
 type State = {
   mapId: number;

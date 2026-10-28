@@ -1,6 +1,6 @@
 import { Spinner } from 'react-bootstrap';
-import { useAppSelector } from '../store';
-import { selectIsLoading } from '../store/map';
+import { useAppSelector } from '../store/index.ts';
+import { selectIsLoading } from '../store/map.ts';
 
 export function LoadingOverlay() {
   const isLoading = useAppSelector(selectIsLoading);

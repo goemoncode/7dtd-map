@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { AppState } from '.';
+import type { AppState } from './index.ts';
 
 type State = {
   prefabNameFilterPresets: [string, string][];

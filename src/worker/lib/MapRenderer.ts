@@ -1,12 +1,12 @@
-import { GameCoords, GameMapSize, shallowEqualLeft } from '../../utils';
-import { PngBlob } from '../../utils/PngBlob';
-import { MapPreference, defaultPreference } from '../../utils/MapPreference';
-import { throttledInvoker } from '../../utils/throttledInvoker';
-import { SpawnPoint } from '../../utils/parseSpawnPointsXml';
-import { MatchedPrefab } from './PrefabsFilter';
-import { ImageBitmapHolder } from './ImageBitmapHolder';
-import { MapPrefabMarker, MapSpotMarkers } from './MapSpotMarker';
-import type { WorkerEventArgs } from '../mapRenderer';
+import { GameCoords, GameMapSize, shallowEqualLeft } from '../../utils/index.ts';
+import { PngBlob } from '../../utils/PngBlob.ts';
+import { defaultPreference, MapPreference } from '../../utils/MapPreference.ts';
+import { throttledInvoker } from '../../utils/throttledInvoker.ts';
+import { SpawnPoint } from '../../utils/parseSpawnPointsXml.ts';
+import { MatchedPrefab } from './PrefabsFilter.ts';
+import { ImageBitmapHolder } from './ImageBitmapHolder.ts';
+import { MapPrefabMarker, MapSpotMarkers } from './MapSpotMarker.ts';
+import type { WorkerEventArgs } from '../mapRenderer.ts';
 
 export interface MapProperties {
   mapSize: GameMapSize | null;

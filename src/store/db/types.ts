@@ -1,8 +1,8 @@
-import type { Language } from '../../utils/language';
-import type { PngBlob } from '../../utils/PngBlob';
-import type { MapInfo } from '../../utils/parseMapInfoXml';
-import type { MapDecoration } from '../../utils/parsePrefabsXml';
-import type { SpawnPoint } from '../../utils/parseSpawnPointsXml';
+import type { Language } from '../../utils/language.ts';
+import type { PngBlob } from '../../utils/PngBlob.ts';
+import type { MapInfo } from '../../utils/parseMapInfoXml.ts';
+import type { MapDecoration } from '../../utils/parsePrefabsXml.ts';
+import type { SpawnPoint } from '../../utils/parseSpawnPointsXml.ts';
 
 export interface MapMetadata {
   id: number;

@@ -1,6 +1,6 @@
 import { Col, Row } from 'react-bootstrap';
-import { GameCoords } from '../../utils';
-import { useMapElevation } from '../../hooks/useMaps';
+import { GameCoords } from '../../utils/index.ts';
+import { useMapElevation } from '../../hooks/useMaps.ts';
 
 interface Props {
   coords?: GameCoords | null;

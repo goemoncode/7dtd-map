@@ -1,4 +1,4 @@
-import { MatchedPrefab } from './PrefabsFilter';
+import { MatchedPrefab } from './PrefabsFilter.ts';
 
 export interface MapSpotMarkers {
   flag: MapSpotMarker;

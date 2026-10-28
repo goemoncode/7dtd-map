@@ -1,4 +1,4 @@
-import { Png } from '../worker/proxies/Png';
+import { Png } from '../worker/proxies/Png.ts';
 
 export class ImageBitmapLoader {
   static async fromSplat3(file: File): Promise<ImageBitmap> {

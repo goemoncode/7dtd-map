@@ -1,7 +1,10 @@
-import { GameCoords } from '.';
+import { GameCoords } from './index.ts';
 
 export class Dtm {
-  constructor(public data: Uint8Array, public size: number = Math.sqrt(data.length)) {}
+  constructor(
+    public data: Uint8Array,
+    public size: number = Math.sqrt(data.length)
+  ) {}
 
   getElevation(coords: GameCoords): number {
     // In-game coords with left-top offset

@@ -1,30 +1,30 @@
-import { useState, useEffect, Suspense } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { shallowEqual } from 'react-redux';
 import { useDebounce } from 'react-use';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Button, Container, Navbar, Offcanvas } from 'react-bootstrap';
-import { useAppSelector } from './store';
-import { selectLanguage, selectTheme } from './store/local';
-import { selectMapPreference } from './store/map';
+import { useAppSelector } from './store/index.ts';
+import { selectLanguage, selectTheme } from './store/local.ts';
+import { selectMapPreference } from './store/map.ts';
 import {
   selectBlocksUsedFilter,
   selectDifficultyFilter,
-  selectPrefabTagsFilter,
   selectMarkerCoords,
   selectPrefabNameFilter,
-} from './store/prefabs';
-import { mapRenderer, prefabsFilter } from './worker/proxies';
-import { useLocalization, usePrefabs } from './hooks/usePrefabs';
-import { MapViewHandle, MapViewHandleProvider } from './hooks/useMapView';
-import { FALLBACK_LANGUAGE } from './utils/language';
+  selectPrefabTagsFilter,
+} from './store/prefabs.ts';
+import { mapRenderer, prefabsFilter } from './worker/proxies/index.ts';
+import { useLocalization, usePrefabs } from './hooks/usePrefabs.ts';
+import { MapViewHandle, MapViewHandleProvider } from './hooks/useMapView.ts';
+import { FALLBACK_LANGUAGE } from './utils/language.ts';
 import NavbarIcon from './assets/navbar.svg?react';
-import MapView from './components/MapView';
-import { AppNav } from './components/AppNav';
-import { ErrorPage } from './components/ErrorPage';
-import { HowToUseModal } from './components/HowToUseModal';
-import { MapController } from './components/MapController';
-import { DragDropOverlay } from './components/DragDropOverlay';
-import { LoadingSpinner } from './components/shared/LoadingSpinner';
+import MapView from './components/MapView.tsx';
+import { AppNav } from './components/AppNav.tsx';
+import { ErrorPage } from './components/ErrorPage.tsx';
+import { HowToUseModal } from './components/HowToUseModal.tsx';
+import { MapController } from './components/MapController.tsx';
+import { DragDropOverlay } from './components/DragDropOverlay.tsx';
+import { LoadingSpinner } from './components/shared/LoadingSpinner.tsx';
 
 function App() {
   const [navMenuShow, setNavMenuShow] = useState(false);

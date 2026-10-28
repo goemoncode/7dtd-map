@@ -1,7 +1,7 @@
-import { requireNonnull } from '../utils';
-import { Png } from './proxies/Png';
-import { isPngBlob } from '../utils/PngBlob';
-import { MapMetadata, db } from '../store/db';
+import { requireNonnull } from '../utils/index.ts';
+import { Png } from './proxies/Png.ts';
+import { isPngBlob } from '../utils/PngBlob.ts';
+import { db, MapMetadata } from '../store/db/index.ts';
 
 onmessage = async ({ data: mapId }: MessageEvent<number>) => {
   const [w, h] = await db.getMapSize(mapId);

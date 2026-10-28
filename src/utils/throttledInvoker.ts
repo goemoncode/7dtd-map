@@ -1,4 +1,4 @@
-import { waitAnimationFrame } from '.';
+import { waitAnimationFrame } from './index.ts';
 
 export function throttledInvoker(asyncFunc: () => Promise<void> | void): () => Promise<void> {
   const workerPromises: Promise<void>[] = [];

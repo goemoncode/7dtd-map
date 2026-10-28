@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { AccordionEventKey } from 'react-bootstrap/esm/AccordionContext';
-import type { AppState } from '.';
+import type { AppState } from './index.ts';
 
 export const sidebarMenuTabs = ['map-selection', 'map-preference', 'prefabs'] as const;
 

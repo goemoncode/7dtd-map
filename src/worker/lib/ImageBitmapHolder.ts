@@ -1,5 +1,5 @@
-import { requireNonnull } from '../../utils';
-import { PngBlob, imageBitmapToPngBlob, isPngBlob } from '../../utils/PngBlob';
+import { requireNonnull } from '../../utils/index.ts';
+import { imageBitmapToPngBlob, isPngBlob, PngBlob } from '../../utils/PngBlob.ts';
 
 const IMG_AGE_MSEC = 10000;
 
@@ -9,7 +9,11 @@ export class ImageBitmapHolder {
   private fallbackPromise: Promise<ImageBitmap> | null = null;
   private lastAccessAt = 0;
 
-  constructor(private label: string, blobOrBitmap: PngBlob | ImageBitmap, private imgAge = IMG_AGE_MSEC) {
+  constructor(
+    private label: string,
+    blobOrBitmap: PngBlob | ImageBitmap,
+    private imgAge = IMG_AGE_MSEC
+  ) {
     if (isPngBlob(blobOrBitmap)) {
       this.blob = blobOrBitmap;
     } else {

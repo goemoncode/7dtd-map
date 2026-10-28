@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react';
-import { GameCoords, calcDist } from '../utils';
-import { MatchedPrefab } from '../worker/lib/PrefabsFilter';
+import { calcDist, GameCoords } from '../utils/index.ts';
+import { MatchedPrefab } from '../worker/lib/PrefabsFilter.ts';
 
 export function useTileSearch(matched: MatchedPrefab[], mapSize: number, tileSize: number = 256) {
   const tiles = useMemo(() => {

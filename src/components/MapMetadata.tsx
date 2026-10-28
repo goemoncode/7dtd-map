@@ -1,7 +1,7 @@
 import { Fragment, useCallback } from 'react';
-import { useMapMetadata } from '../hooks/useMaps';
-import { biomeColors } from '../utils/parseMapInfoXml';
-import { round10 } from '../utils/mathx';
+import { useMapMetadata } from '../hooks/useMaps.ts';
+import { biomeColors } from '../utils/parseMapInfoXml.ts';
+import { round10 } from '../utils/mathx.ts';
 import RectSvg from '../assets/rect.svg?react';
 
 export function MapMetadata() {

@@ -1,5 +1,36 @@
-@import "./variables";
-@import "bootstrap";
+@use "./variables" as vars;
+@use "bootstrap" as bootstrap with (
+  $font-size-base: vars.$font-size-base,
+  $spacer: vars.$spacer,
+  $grid-gutter-width: vars.$grid-gutter-width,
+  $border-radius: vars.$border-radius,
+  $btn-white-space: vars.$btn-white-space,
+  $navbar-padding-y: vars.$navbar-padding-y,
+  $nav-link-padding-y: vars.$nav-link-padding-y,
+  $nav-link-padding-x: vars.$nav-link-padding-x,
+  $navbar-nav-link-padding-x: vars.$navbar-nav-link-padding-x,
+  $dropdown-header-padding-y: vars.$dropdown-header-padding-y,
+  $input-btn-padding-y: vars.$input-btn-padding-y,
+  $input-btn-padding-x: vars.$input-btn-padding-x,
+  $input-placeholder-color: vars.$input-placeholder-color,
+  $form-check-input-border-radius: vars.$form-check-input-border-radius,
+  $list-group-color: vars.$list-group-color,
+  $list-group-bg: vars.$list-group-bg,
+  $modal-header-padding-y: vars.$modal-header-padding-y,
+  $modal-header-padding-x: vars.$modal-header-padding-x,
+  $modal-content-border-radius: vars.$modal-content-border-radius,
+  $modal-content-border-width: vars.$modal-content-border-width,
+  $modal-header-border-width: vars.$modal-header-border-width,
+  $alert-padding-x: vars.$alert-padding-x,
+  $alert-border-width: vars.$alert-border-width,
+  $alert-margin-bottom: vars.$alert-margin-bottom,
+  $accordion-padding-x: vars.$accordion-padding-x,
+  $accordion-padding-y: vars.$accordion-padding-y,
+  $mark-padding: vars.$mark-padding,
+  $mark-bg: vars.$mark-bg,
+  $table-cell-padding-x-sm: vars.$table-cell-padding-x-sm,
+  $utilities: vars.$utilities
+);
 
 // Form Control
 
@@ -21,7 +52,7 @@
 // Modal
 
 .custom-dialog {
-  @include media-breakpoint-up(sm) {
+  @include bootstrap.media-breakpoint-up(sm) {
     width: 90vw;
     max-width: 800px;
   }
@@ -31,7 +62,7 @@
 
 .shrinky.accordion-header {
   .accordion-button::after {
-    @include media-breakpoint-up(md) {
+    @include bootstrap.media-breakpoint-up(md) {
       --bs-accordion-btn-icon: none;
     }
   }

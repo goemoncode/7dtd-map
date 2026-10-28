@@ -1,5 +1,5 @@
-import { Language, resolveLang } from '../../utils/language';
-import { LabelMap } from '../../store/db';
+import { Language, resolveLang } from '../../utils/language.ts';
+import { LabelMap } from '../../store/db/index.ts';
 
 export type LabelMapFetcher = (lang: Language) => Promise<LabelMap | undefined>;
 export type LabelMapper = (key: string) => string | undefined;

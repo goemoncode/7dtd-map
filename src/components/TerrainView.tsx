@@ -2,10 +2,10 @@ import { useEffect, useRef } from 'react';
 import { CloseButton } from 'react-bootstrap';
 import { useWindowSize } from 'react-use';
 import clsx from 'clsx';
-import { useAppDispatch, useAppSelector } from '../store';
-import { selectIsTerrainViewOpen, setIsTerrainViewOpen, setTerrainViewStatus } from '../store/map';
-import { mapRenderer } from '../worker/proxies';
-import { TerrainViewHud } from './TerrainViewHud';
+import { useAppDispatch, useAppSelector } from '../store/index.ts';
+import { selectIsTerrainViewOpen, setIsTerrainViewOpen, setTerrainViewStatus } from '../store/map.ts';
+import { mapRenderer } from '../worker/proxies/index.ts';
+import { TerrainViewHud } from './TerrainViewHud.tsx';
 
 interface Props {
   textureCanvas: HTMLCanvasElement | null;
@@ -62,8 +62,7 @@ export function TerrainView({ textureCanvas }: Props) {
         onKeyUp={handleKeyUp}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
-        onWheel={handleWheel}
-      ></canvas>
+        onWheel={handleWheel}></canvas>
       <TerrainViewHud />
       <CloseButton onClick={() => dispatch(setIsTerrainViewOpen(false))} />
     </div>

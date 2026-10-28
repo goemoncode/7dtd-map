@@ -1,10 +1,10 @@
 import { useCallback } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { useAppSelector } from '../store';
-import { selectLanguage } from '../store/local';
-import { LabelMap, PrefabInfo, db } from '../store/db';
-import { fetchJson } from '../utils';
-import { FALLBACK_LANGUAGE, Language } from '../utils/language';
+import { useAppSelector } from '../store/index.ts';
+import { selectLanguage } from '../store/local.ts';
+import { db, LabelMap, PrefabInfo } from '../store/db/index.ts';
+import { fetchJson } from '../utils/index.ts';
+import { FALLBACK_LANGUAGE, Language } from '../utils/language.ts';
 
 export function usePrefabs() {
   return useQuery({

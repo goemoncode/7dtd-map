@@ -10,8 +10,18 @@ export default defineConfig({
   base: '/7dtd-map/',
   publicDir: resolve(__dirname, 'public'),
   envDir: resolve(__dirname),
+  cacheDir: resolve(__dirname, '.vite'),
   build: {
     outDir: '../dist',
     emptyOutDir: true,
+    chunkSizeWarningLimit: 1000,
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        quietDeps: true,
+        silenceDeprecations: ['legacy-js-api'],
+      },
+    },
   },
 });

@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
 import { useLiveQuery } from 'dexie-react-hooks';
-import { useAppSelector } from '../store';
-import { selectMapId } from '../store/map';
-import { db } from '../store/db';
-import { GameMapSize, gameMapSize } from '../utils';
-import { Dtm } from '../utils/Dtm';
+import { useAppSelector } from '../store/index.ts';
+import { selectMapId } from '../store/map.ts';
+import { db } from '../store/db/index.ts';
+import { GameMapSize, gameMapSize } from '../utils/index.ts';
+import { Dtm } from '../utils/Dtm.ts';
 
 export function useMapSize(): [number, GameMapSize | null] {
   const mapId = useAppSelector(selectMapId);

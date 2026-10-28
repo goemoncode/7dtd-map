@@ -1,31 +1,38 @@
-import { CSSProperties, MouseEvent, RefAttributes, forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
+import { CSSProperties, forwardRef, MouseEvent, RefAttributes, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useDebounce, usePrevious } from 'react-use';
 import { BsFlagFill, BsPlusCircle, BsPlusLg } from 'react-icons/bs';
 import { animated, useSpring, useSprings } from '@react-spring/web';
 import { createUseGesture, dragAction, wheelAction } from '@use-gesture/react';
 import clsx from 'clsx';
-import { useAppDispatch, useAppSelector } from '../store';
-import { selectMapScale, setMapScale } from '../store/map';
-import { selectMatched, selectActivePrefab, setCursorCoords, setMarkerCoords, setActivePrefab, selectCursorCoords } from '../store/prefabs';
-import { db } from '../store/db';
-import { mapRenderer, prefabsFilter } from '../worker/proxies';
-import { gameCoords, gameMapSize } from '../utils';
-import { rangeInputSettings, scaleUp } from '../utils/MapPreference';
-import { useMapSize } from '../hooks/useMaps';
-import { useModal } from '../hooks/useModal';
-import { useLoading } from '../hooks/useLoading';
-import { MapViewHandle } from '../hooks/useMapView';
-import { useTileSearch } from '../hooks/useTileSearch';
-import { useContextMenu } from '../hooks/useContextMenu';
-import { MatchedPrefab } from '../worker/lib/PrefabsFilter';
-import { LoadingOverlay } from './LoadingOverlay';
-import { TerrainView } from './TerrainView';
-import { MapMetadata } from './MapMetadata';
-import { PrefabPopover } from './PrefabPopover';
-import { PrefabOffcanvas } from './PrefabOffcanvas';
-import { ContextMenu } from './shared/ContextMenu';
-import { Distance } from './shared/Distance';
+import { useAppDispatch, useAppSelector } from '../store/index.ts';
+import { selectMapScale, setMapScale } from '../store/map.ts';
+import {
+  selectActivePrefab,
+  selectCursorCoords,
+  selectMatched,
+  setActivePrefab,
+  setCursorCoords,
+  setMarkerCoords,
+} from '../store/prefabs.ts';
+import { db } from '../store/db/index.ts';
+import { mapRenderer, prefabsFilter } from '../worker/proxies/index.ts';
+import { gameCoords, gameMapSize } from '../utils/index.ts';
+import { rangeInputSettings, scaleUp } from '../utils/MapPreference.ts';
+import { useMapSize } from '../hooks/useMaps.ts';
+import { useModal } from '../hooks/useModal.ts';
+import { useLoading } from '../hooks/useLoading.ts';
+import { MapViewHandle } from '../hooks/useMapView.ts';
+import { useTileSearch } from '../hooks/useTileSearch.ts';
+import { useContextMenu } from '../hooks/useContextMenu.ts';
+import { MatchedPrefab } from '../worker/lib/PrefabsFilter.ts';
+import { LoadingOverlay } from './LoadingOverlay.tsx';
+import { TerrainView } from './TerrainView.tsx';
+import { MapMetadata } from './MapMetadata.tsx';
+import { PrefabPopover } from './PrefabPopover.tsx';
+import { PrefabOffcanvas } from './PrefabOffcanvas.tsx';
+import { ContextMenu } from './shared/ContextMenu.tsx';
+import { Distance } from './shared/Distance.tsx';
 import ScopeSvg from '../assets/scope.svg?react';
 
 const useGesture = createUseGesture([dragAction, wheelAction]);
@@ -202,8 +209,7 @@ export function MapView(_: Props, refHandle: React.Ref<MapViewHandle>) {
         onMouseMove={handleMouseMove}
         onContextMenu={(event) => {
           if (getMouseCoords(event)) handleContextMenu(event);
-        }}
-      >
+        }}>
         <animated.div className="map-container" style={containerStyle}>
           <animated.canvas
             ref={canvasRef}
@@ -228,8 +234,7 @@ export function MapView(_: Props, refHandle: React.Ref<MapViewHandle>) {
                 event.stopPropagation();
                 dispatch(setActivePrefab(prefabsAround[i]));
                 popoverApi.set({ x: style.x.get(), y: style.y.get() });
-              }}
-            ></animated.div>
+              }}></animated.div>
           ))}
           {activePrefab && (
             <animated.div className="prefab-popover" style={popoverStyle}>
@@ -277,8 +282,7 @@ export function MapView(_: Props, refHandle: React.Ref<MapViewHandle>) {
               onClick={handleMenuClick(() => {
                 const coords = getMouseCoords(event);
                 if (coords) dispatch(setMarkerCoords(coords));
-              })}
-            >
+              })}>
               <BsFlagFill className="text-primary me-3" />
               Put a flag here
             </ContextMenu.Item>

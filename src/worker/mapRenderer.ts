@@ -1,6 +1,6 @@
-import { MapEmojiMarker } from './lib/MapSpotMarker';
-import { MapProperties, MapRenderer, MapUpdateStatus } from './lib/MapRenderer';
-import { TerrainRenderer, TerrainUpdateStatus } from './lib/TerrainRenderer';
+import { MapEmojiMarker } from './lib/MapSpotMarker.ts';
+import { MapProperties, MapRenderer, MapUpdateStatus } from './lib/MapRenderer.ts';
+import { TerrainRenderer, TerrainUpdateStatus } from './lib/TerrainRenderer.ts';
 
 const notoFont = new FontFace('Noto Sans', 'url(/fonts/NotoEmoji-Regular.ttf)');
 const textureRenderer = new MapRenderer({

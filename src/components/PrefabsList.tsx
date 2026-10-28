@@ -1,22 +1,22 @@
 import { useEffect } from 'react';
 import { Badge, Button, Col, ListGroup, Row, Stack } from 'react-bootstrap';
 import { BsFunnel, BsGeoAltFill } from 'react-icons/bs';
-import { useAppDispatch, useAppSelector } from '../store';
+import { useAppDispatch, useAppSelector } from '../store/index.ts';
 import {
+  selectActivePrefab,
   selectFilterStatus,
   selectHasMorePrefabs,
-  selectActivePrefab,
   selectPrefabs,
   setBlocksUsedFilter,
   setFilterResult,
   setPrefabNameFilter,
   showMorePrefabs,
-} from '../store/prefabs';
-import { useMapView } from '../hooks/useMapView';
-import { mapRenderer, prefabsFilter } from '../worker/proxies';
-import { PrefabsFilterResult } from '../worker/lib/PrefabsFilter';
-import { HighlightedText } from './shared/HighlightedText';
-import { Distance } from './shared/Distance';
+} from '../store/prefabs.ts';
+import { useMapView } from '../hooks/useMapView.ts';
+import { mapRenderer, prefabsFilter } from '../worker/proxies/index.ts';
+import { PrefabsFilterResult } from '../worker/lib/PrefabsFilter.ts';
+import { HighlightedText } from './shared/HighlightedText.tsx';
+import { Distance } from './shared/Distance.tsx';
 import clsx from 'clsx';
 
 export function PrefabsList() {
@@ -47,8 +47,7 @@ export function PrefabsList() {
             onClick={(event) => {
               event.preventDefault();
               mapView?.focusOn(prefab);
-            }}
-          >
+            }}>
             <Stack>
               <Row className="g-0">
                 <Col xs={9}>
@@ -63,8 +62,7 @@ export function PrefabsList() {
                       event.preventDefault();
                       event.stopPropagation();
                       dispatch(setPrefabNameFilter(prefab.name));
-                    }}
-                  >
+                    }}>
                     <BsFunnel />
                   </a>
                 </Col>
@@ -103,8 +101,7 @@ export function PrefabsList() {
                               event.preventDefault();
                               event.stopPropagation();
                               dispatch(setBlocksUsedFilter(block.name));
-                            }}
-                          >
+                            }}>
                             <BsFunnel />
                           </a>
                         </Col>

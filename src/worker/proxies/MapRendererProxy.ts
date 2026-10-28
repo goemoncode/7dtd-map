@@ -1,7 +1,6 @@
-import MapRenderer from '../mapRenderer?worker';
-import type { MapUpdateEventArgs, WorkerEventArgs } from '../mapRenderer';
-import type { MapProperties } from '../lib/MapRenderer';
-import { lazy } from '.';
+import type { MapUpdateEventArgs, WorkerEventArgs } from '../mapRenderer.ts';
+import type { MapProperties } from '../lib/MapRenderer.ts';
+import { lazy } from './index.ts';
 
 function isTransferable(v: unknown): v is ImageBitmap {
   return v instanceof ImageBitmap;
@@ -20,7 +19,7 @@ function getTransferables(args: WorkerEventArgs) {
 }
 
 class MapRendererProxy {
-  private worker = lazy(MapRenderer);
+  private worker = lazy(() => new Worker(new URL('../mapRenderer.ts', import.meta.url), { type: 'module' }));
 
   initialized = false;
 
