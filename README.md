@@ -4,6 +4,13 @@ Map renderer for 7 Days to Die.
 
 - https://goemoncode.github.io/7dtd-map/
 
+## External prefab data
+
+The app reads `manifest.json` beside the prefab `index.json`. For schema version 1, it uses `dataVersion` to refresh its IndexedDB cache and
+verifies downloaded JSON against the manifest's SHA-256 checksums. If the manifest is unavailable (for example, for an older custom data
+source), the app continues to load the JSON files directly. When a refresh fails, the last successfully cached data remains available. The
+Reset action clears this cache.
+
 ## Development (Deno)
 
 This project runs on [Deno](https://deno.com/) (Deno 2.x+).

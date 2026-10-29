@@ -1,6 +1,14 @@
 import { Dexie, Table } from 'dexie';
 import { shallowEqualLeft } from '../../utils/index.ts';
-import { Localization, MapLargeObject, MapLargeObjects, MapLargeObjectType, MapMetadata, PrefabInfo } from './types.ts';
+import {
+  ExternalDataVersion,
+  Localization,
+  MapLargeObject,
+  MapLargeObjects,
+  MapLargeObjectType,
+  MapMetadata,
+  PrefabInfo,
+} from './types.ts';
 export * from './types.ts';
 
 export const DATABASE_NAME = '7dtd-map';
@@ -12,6 +20,7 @@ export class MyDexie extends Dexie {
   MapLargeObjects!: Table<MapLargeObject<any>, [number, string]>;
   Localizations!: Table<Localization, string>;
   Prefabs!: Table<PrefabInfo, string>;
+  DataVersions!: Table<ExternalDataVersion, [string, string, string]>;
 
   constructor() {
     super(DATABASE_NAME);
@@ -20,6 +29,13 @@ export class MyDexie extends Dexie {
       MapLargeObjects: '[mapId+type],mapId',
       Localizations: 'lang',
       Prefabs: 'name',
+    });
+    this.version(2).stores({
+      Maps: '++id',
+      MapLargeObjects: '[mapId+type],mapId',
+      Localizations: 'lang',
+      Prefabs: 'name',
+      DataVersions: '[kind+url+lang],kind',
     });
     this.on('ready', async () => {
       const count = await this.Maps.count();
@@ -73,7 +89,7 @@ export class MyDexie extends Dexie {
       types.map(async (type) => {
         const obj = await this.getLargeObject(mapId, type);
         return obj ? { [type]: obj } : {};
-      })
+      }),
     );
     return objects.reduce((merged, o) => ({ ...merged, ...o }), {});
   }
