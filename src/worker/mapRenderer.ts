@@ -2,7 +2,8 @@ import { MapEmojiMarker } from './lib/MapSpotMarker.ts';
 import { MapProperties, MapRenderer, MapUpdateStatus } from './lib/MapRenderer.ts';
 import { TerrainRenderer, TerrainUpdateStatus } from './lib/TerrainRenderer.ts';
 
-const notoFont = new FontFace('Noto Sans', 'url(/fonts/NotoEmoji-Regular.ttf)');
+const notoFontUrl = new URL(`${import.meta.env.BASE_URL}fonts/NotoEmoji-Regular.ttf`, self.location.origin);
+const notoFont = new FontFace('Noto Sans', `url(${notoFontUrl.href})`);
 const textureRenderer = new MapRenderer({
   markers: {
     flag: new MapEmojiMarker('🏴', 100, notoFont.family, 'blue', 'left', 'bottom', -31, 5),
@@ -27,10 +28,13 @@ export type WorkerEventArgs =
   | ({ eventName: 'resize' } & ResizeEvent)
   | ({ eventName: 'keydown' | 'keyup' } & Pick<React.KeyboardEvent<HTMLCanvasElement>, 'code'>)
   | ({ eventName: 'wheel' } & Pick<React.WheelEvent<HTMLCanvasElement>, 'deltaY'>)
-  | ({ eventName: 'mousedown' | 'mousemove' } & Pick<
+  | (
+    & { eventName: 'mousedown' | 'mousemove' }
+    & Pick<
       React.MouseEvent<HTMLCanvasElement>,
       'button' | 'buttons' | 'movementX' | 'movementY'
-    >);
+    >
+  );
 
 type InitEvent = { textureCanvas: OffscreenCanvas; terrainCanvas: OffscreenCanvas; devicePixelRatio: number };
 type UpdateTextureEvent = Partial<MapProperties>;

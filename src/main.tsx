@@ -19,5 +19,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         </PersistGate>
       </Provider>
     </QueryClientProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
+
+window.addEventListener('load', () => {
+  const desktopReady = (window as Window & { desktopReady?: () => Promise<unknown> }).desktopReady;
+  if (desktopReady) void desktopReady();
+});

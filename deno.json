@@ -3,11 +3,14 @@
   "tasks": {
     "dev": "deno run -A --node-modules-dir=auto npm:vite",
     "build": "deno task check && deno run -A --node-modules-dir=auto npm:vite build",
+    "desktop:build": "deno task check && deno run -A --node-modules-dir=auto npm:vite build --mode desktop",
+    "desktop": "deno task desktop:build && deno run -A --unstable-ffi src/desktop/main.ts",
+    "desktop:exe": "deno task desktop:build && deno run -A src/desktop/build-exe.ts",
     "preview": "deno run -A --node-modules-dir=auto npm:vite preview",
     "lint": "deno lint",
     "fmt": "deno fmt",
     "fmt:prettier": "deno run -A npm:prettier --write src/",
-    "check": "deno check src/main.tsx vite.config.ts src/worker/mapRenderer.ts src/worker/mapStatsUpdater.ts src/worker/pngParser.ts src/worker/prefabsFilter.ts"
+    "check": "deno check src/main.tsx vite.config.ts src/worker/mapRenderer.ts src/worker/mapStatsUpdater.ts src/worker/pngParser.ts src/worker/prefabsFilter.ts src/desktop/main.ts src/desktop/server.worker.ts src/desktop/build-exe.ts"
   },
   "compilerOptions": {
     "jsx": "react-jsx",
@@ -51,6 +54,7 @@
     "dist/"
   ],
   "imports": {
+    "@webview/webview": "jsr:@webview/webview@0.9.0",
     "react": "npm:react@^18.2.0",
     "react/": "npm:/react@^18.2.0/",
     "react-dom": "npm:react-dom@^18.2.0",
@@ -59,6 +63,7 @@
     "@reduxjs/toolkit": "npm:@reduxjs/toolkit@^1.9.7",
     "react-redux": "npm:react-redux@^8.1.3",
     "redux-persist": "npm:redux-persist@^6.0.0",
+    "redux-persist/integration/react": "npm:redux-persist@^6.0.0/es/integration/react.js",
     "redux-persist/": "npm:/redux-persist@^6.0.0/",
     "@tanstack/react-query": "npm:@tanstack/react-query@^5.0.0",
     "dexie": "npm:dexie@^3.2.4",
