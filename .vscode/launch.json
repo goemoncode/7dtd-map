@@ -14,7 +14,6 @@
       "cwd": "${workspaceFolder}",
       "preLaunchTask": "Desktop: Debug Build",
       "env": {
-        "7DTD_MAP_DEBUG": "1",
         "7DTD_MAP_HMR": "1"
       },
       "console": "integratedTerminal",

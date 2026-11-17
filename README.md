@@ -33,8 +33,8 @@ and user-generated worlds from `%APPDATA%\7DaysToDie\GeneratedWorlds`.
 
 Select **Desktop: Debug** in the Run and Debug view and press **F5**. VS Code builds the app with source maps, starts a Vite development
 server, and launches `src/desktop/main.ts` under the Deno debugger. Changes to React and SCSS files are applied through HMR; changes to the
-Deno desktop process require restarting the debug session. The WebView developer tools are enabled only for this launch; use the WebView's
-developer-tools shortcut to inspect the UI. To debug the frontend in a browser, start the app with **Desktop: Debug** first, then select
+Deno desktop process require restarting the debug session. The WebView developer tools are available in release builds as well; use the
+WebView's developer-tools shortcut to inspect the UI. To debug the frontend in a browser, start the app with **Desktop: Debug** first, then select
 **Web UI: Attach to desktop**. The browser configuration attaches to the Vite development server.
 
 The equivalent terminal command is `deno task desktop:debug`; it also starts the HMR server. To debug the main process manually, run

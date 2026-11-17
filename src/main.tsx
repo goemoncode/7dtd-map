@@ -21,7 +21,7 @@ void startApp();
 
 async function startApp() {
   try {
-    if (await prepareDebugDatabase()) {
+    if (await prepareDatabase()) {
       ReactDOM.createRoot(rootElement).render(
         <React.StrictMode>
           <QueryClientProvider client={queryClient}>
@@ -34,24 +34,24 @@ async function startApp() {
         </React.StrictMode>,
       );
     } else {
-      rootElement.textContent = 'Database rebuild cancelled. Close the app and clear the incompatible database to continue.';
+      rootElement.textContent = 'Database reset cancelled. Close the app and use a build with a compatible database schema.';
     }
   } catch (error) {
-    console.error('Could not prepare the debug database.', error);
-    rootElement.textContent = `Could not prepare the debug database: ${error instanceof Error ? error.message : String(error)}`;
+    console.error('Could not prepare the database.', error);
+    rootElement.textContent = `Could not prepare the database: ${error instanceof Error ? error.message : String(error)}`;
   }
 }
 
-async function prepareDebugDatabase() {
-  if (import.meta.env.MODE !== 'desktop-debug' || typeof indexedDB.databases !== 'function') return true;
+async function prepareDatabase() {
+  if (typeof indexedDB.databases !== 'function') return true;
   const database = (await indexedDB.databases()).find((entry) => entry.name === DATABASE_NAME);
   const expectedIndexedDbVersion = DATABASE_SCHEMA_VERSION * 10;
   if (!database?.version || database.version <= expectedIndexedDbVersion) return true;
   if (
     !window.confirm(
-      `The saved debug database uses a newer schema version (${
+      `The saved database uses a newer schema version (${
         database.version / 10
-      }) than this build (${DATABASE_SCHEMA_VERSION}). Delete it and continue? All saved maps will be lost.`,
+      }) than this app (${DATABASE_SCHEMA_VERSION}). Delete it and continue? All saved maps will be lost.`,
     )
   ) {
     return false;

@@ -7,7 +7,7 @@ import { startViteDevServer, stopViteDevServer } from './viteDevServer.ts';
 const desktopDistUrl = new URL('../../dist-desktop/', import.meta.url);
 await Deno.stat(new URL('index.html', desktopDistUrl));
 const desktopDistPath = await Deno.realPath(desktopDistUrl);
-const enableWebviewDevTools = Deno.env.get('7DTD_MAP_DEBUG') === '1';
+const enableWebviewDevTools = true;
 
 // Keep WebView's Windows loader DLL inside the generated desktop output directory.
 await Deno.chdir(desktopDistPath);

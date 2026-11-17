@@ -41,6 +41,8 @@ const compile = new Deno.Command(Deno.execPath(), {
     '--no-terminal',
     '--unstable-ffi',
     '--self-extracting',
+    '--node-modules-dir=none',
+    '--exclude-unused-npm',
     '--app-name',
     '7dtd-map',
     '--include',
