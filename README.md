@@ -34,8 +34,8 @@ and user-generated worlds from `%APPDATA%\7DaysToDie\GeneratedWorlds`.
 Select **Desktop: Debug** in the Run and Debug view and press **F5**. VS Code builds the app with source maps, starts a Vite development
 server, and launches `src/desktop/main.ts` under the Deno debugger. Changes to React and SCSS files are applied through HMR; changes to the
 Deno desktop process require restarting the debug session. The WebView developer tools are available in release builds as well; use the
-WebView's developer-tools shortcut to inspect the UI. To debug the frontend in a browser, start the app with **Desktop: Debug** first, then select
-**Web UI: Attach to desktop**. The browser configuration attaches to the Vite development server.
+WebView's developer-tools shortcut to inspect the UI. To debug the frontend in a browser, start the app with **Desktop: Debug** first, then
+select **Web UI: Attach to desktop**. The browser configuration attaches to the Vite development server.
 
 The equivalent terminal command is `deno task desktop:debug`; it also starts the HMR server. To debug the main process manually, run
 `deno run --inspect-brk=127.0.0.1:9229 --unstable-ffi -A src/desktop/debug.ts` after building with `deno task desktop:debug:build`, then
@@ -59,6 +59,10 @@ opening a command prompt. The Microsoft Edge WebView2 Runtime is still required.
 download the pinned WebView libraries. On first launch, Deno extracts its embedded files to its per-user application data directory. The app
 uses a fixed local port to preserve browser storage between launches; if that port is already in use, the app reports an error instead of
 opening an unrelated local service.
+
+To publish a release, push a version tag such as `v1.0.0` for a commit on `main` to GitHub. The release workflow builds the executable and
+attaches it together with a `SHA256SUMS.txt` checksum file to the GitHub Release. To verify a downloaded executable, run
+`Get-FileHash .\7dtd-map.exe -Algorithm SHA256` in PowerShell and compare its hash with the entry in `SHA256SUMS.txt`.
 
 ## Credits
 

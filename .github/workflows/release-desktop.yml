@@ -1,0 +1,30 @@
+name: Release desktop app
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.9.8
+      - name: Build executable
+        run: deno task desktop:exe
+      - name: Generate SHA-256 checksum
+        shell: pwsh
+        run: |
+          $checksum = (Get-FileHash -LiteralPath 'release\7dtd-map.exe' -Algorithm SHA256).Hash.ToLowerInvariant()
+          "$checksum  7dtd-map.exe" | Set-Content -LiteralPath 'release\SHA256SUMS.txt' -Encoding ascii
+      - name: Create GitHub release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$env:GITHUB_REF_NAME" .\release\7dtd-map.exe .\release\SHA256SUMS.txt --generate-notes --verify-tag
