@@ -5,12 +5,28 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "node",
+      "request": "launch",
+      "name": "Desktop: Debug",
+      "runtimeExecutable": "deno",
+      "runtimeArgs": ["run", "--unstable-ffi", "-A"],
+      "program": "${workspaceFolder}/src/desktop/main.ts",
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "Desktop: Debug Build",
+      "env": {
+        "7DTD_MAP_DEBUG": "1",
+        "7DTD_MAP_HMR": "1"
+      },
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
       "type": "chrome",
       "request": "launch",
-      "name": "Launch Chrome",
-      "url": "http://localhost:5173",
+      "name": "Web UI: Attach to desktop",
+      "url": "http://127.0.0.1:5173/index.html",
       "webRoot": "${workspaceFolder}/src",
-      "resolveSourceMapLocations": ["${workspaceFolder}/**", "!**/node_modules/**"]
+      "resolveSourceMapLocations": ["${workspaceFolder}/src/**", "${workspaceFolder}/dist-desktop/**", "!**/node_modules/**"]
     }
   ]
 }

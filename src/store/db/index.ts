@@ -1,17 +1,10 @@
 import { Dexie, Table } from 'dexie';
 import { shallowEqualLeft } from '../../utils/index.ts';
-import {
-  ExternalDataVersion,
-  Localization,
-  MapLargeObject,
-  MapLargeObjects,
-  MapLargeObjectType,
-  MapMetadata,
-  PrefabInfo,
-} from './types.ts';
+import { Localization, MapLargeObject, MapLargeObjects, MapLargeObjectType, MapMetadata, PrefabInfo } from './types.ts';
 export * from './types.ts';
 
 export const DATABASE_NAME = '7dtd-map';
+export const DATABASE_SCHEMA_VERSION = 1;
 export const DEFAULT_WORLD_NAME = 'New World';
 
 export class MyDexie extends Dexie {
@@ -20,22 +13,14 @@ export class MyDexie extends Dexie {
   MapLargeObjects!: Table<MapLargeObject<any>, [number, string]>;
   Localizations!: Table<Localization, string>;
   Prefabs!: Table<PrefabInfo, string>;
-  DataVersions!: Table<ExternalDataVersion, [string, string, string]>;
 
   constructor() {
     super(DATABASE_NAME);
-    this.version(1).stores({
+    this.version(DATABASE_SCHEMA_VERSION).stores({
       Maps: '++id',
       MapLargeObjects: '[mapId+type],mapId',
       Localizations: 'lang',
       Prefabs: 'name',
-    });
-    this.version(2).stores({
-      Maps: '++id',
-      MapLargeObjects: '[mapId+type],mapId',
-      Localizations: 'lang',
-      Prefabs: 'name',
-      DataVersions: '[kind+url+lang],kind',
     });
     this.on('ready', async () => {
       const count = await this.Maps.count();

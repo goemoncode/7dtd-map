@@ -1,54 +1,49 @@
 # 7 Days to Die Map Renderer
 
-Map renderer for 7 Days to Die.
-
-- https://goemoncode.github.io/7dtd-map/
-
-## External prefab data
-
-The app reads `manifest.json` beside the prefab `index.json`. For schema version 1, it uses `dataVersion` to refresh its IndexedDB cache and
-verifies downloaded JSON against the manifest's SHA-256 checksums. If the manifest is unavailable (for example, for an older custom data
-source), the app continues to load the JSON files directly. When a refresh fails, the last successfully cached data remains available. The
-Reset action clears this cache.
+Desktop map renderer for 7 Days to Die. Prefab, block, localization, and preset-world data is read from the local game installation; the app
+no longer downloads game data from 7dtd-tools or another external data source.
 
 ## Development (Deno)
 
 This project runs on [Deno](https://deno.com/) (Deno 2.x+).
 
 ```bash
-# 依存関係のインストール / キャッシュ
 deno install
-
-# 開発サーバーの起動
-deno task dev
-
-# プロダクションビルド
 deno task build
-
-# プレビューサーバーの起動
-deno task preview
-
-# 型チェック
 deno task check
-
-# コードの静的解析 (Linter)
 deno task lint
-
-# フォーマット
 deno task fmt
 ```
 
 ## Windows desktop app (Deno WebView)
 
-Install [Deno 2](https://deno.com/) and the Microsoft Edge WebView2 Runtime, then run:
+Install [Deno 2](https://deno.com/), the Microsoft Edge WebView2 Runtime, and 7 Days to Die, then run:
 
 ```bash
 deno task desktop
 ```
 
-This builds the desktop assets into `dist-desktop/` and opens the app in a native WebView window. The desktop build is separate from the
-website build, so it does not change the GitHub Pages output in `dist/`. The first launch needs an internet connection to download the
-WebView native library.
+This builds the desktop assets into `dist-desktop/` and opens the app in a native WebView window. The app detects Steam libraries and uses
+the installed game files directly. If automatic detection fails, open the help dialog and set the folder that contains `Data\Prefabs`,
+`Data\Config\Localization.csv`, and `Data\Worlds`. The selected path is stored in `%APPDATA%\7dtd-map\game-data.json`. On Windows, use the
+folder button beside the path field to open the native folder picker. The map-load dropdown lists both installed worlds from `Data\Worlds`
+and user-generated worlds from `%APPDATA%\7DaysToDie\GeneratedWorlds`.
+
+### Debug in VS Code
+
+Select **Desktop: Debug** in the Run and Debug view and press **F5**. VS Code builds the app with source maps, starts a Vite development
+server, and launches `src/desktop/main.ts` under the Deno debugger. Changes to React and SCSS files are applied through HMR; changes to the
+Deno desktop process require restarting the debug session. The WebView developer tools are enabled only for this launch; use the WebView's
+developer-tools shortcut to inspect the UI. To debug the frontend in a browser, start the app with **Desktop: Debug** first, then select
+**Web UI: Attach to desktop**. The browser configuration attaches to the Vite development server.
+
+The equivalent terminal command is `deno task desktop:debug`; it also starts the HMR server. To debug the main process manually, run
+`deno run --inspect-brk=127.0.0.1:9229 --unstable-ffi -A src/desktop/debug.ts` after building with `deno task desktop:debug:build`, then
+attach VS Code to `127.0.0.1:9229`.
+
+The debug build's **Rebuild database** action deletes the IndexedDB database, including saved maps and loaded map data, and recreates it
+when the app reloads. If a database from a newer schema is found, the debug build asks before deleting it so it can start with the current
+schema.
 
 To create a single-file Windows executable, run:
 

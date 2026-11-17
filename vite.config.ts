@@ -5,19 +5,29 @@ import svgr from 'vite-plugin-svgr';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
-  const isDesktop = mode === 'desktop';
+  const isDesktopDebug = mode === 'desktop-debug';
+  if (mode !== 'desktop' && !isDesktopDebug) throw new Error('Only the desktop build is supported.');
 
   return {
     plugins: [react(), svgr(), splitVendorChunkPlugin()],
     root: resolve(__dirname, 'src'),
-    base: isDesktop ? './' : '/7dtd-map/',
+    base: './',
     publicDir: resolve(__dirname, 'public'),
     envDir: resolve(__dirname),
     cacheDir: resolve(__dirname, '.vite'),
+    server: {
+      host: '127.0.0.1',
+      port: 5173,
+      strictPort: true,
+      proxy: {
+        '/api': 'http://127.0.0.1:37621',
+      },
+    },
     build: {
-      outDir: isDesktop ? '../dist-desktop' : '../dist',
+      outDir: '../dist-desktop',
       emptyOutDir: true,
       chunkSizeWarningLimit: 1000,
+      sourcemap: isDesktopDebug,
     },
     css: {
       preprocessorOptions: {

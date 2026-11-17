@@ -1,16 +1,16 @@
 {
   "nodeModulesDir": "auto",
   "tasks": {
-    "dev": "deno run -A --node-modules-dir=auto npm:vite",
-    "build": "deno task check && deno run -A --node-modules-dir=auto npm:vite build",
-    "desktop:build": "deno task check && deno run -A --node-modules-dir=auto npm:vite build --mode desktop",
-    "desktop": "deno task desktop:build && deno run -A --unstable-ffi src/desktop/main.ts",
+    "build": "deno task check && deno run -A --node-modules-dir=auto npm:vite build --mode desktop",
+    "desktop:build": "deno task build",
+    "desktop:debug:build": "deno task check && deno run -A --node-modules-dir=auto npm:vite build --mode desktop-debug",
+    "desktop:debug": "deno task desktop:debug:build && deno run --inspect-brk=127.0.0.1:9229 --unstable-ffi -A src/desktop/debug.ts",
+    "desktop": "deno task build && deno run -A --unstable-ffi src/desktop/main.ts",
     "desktop:exe": "deno task desktop:build && deno run -A src/desktop/build-exe.ts",
-    "preview": "deno run -A --node-modules-dir=auto npm:vite preview",
     "lint": "deno lint",
     "fmt": "deno fmt",
     "fmt:prettier": "deno run -A npm:prettier --write src/",
-    "check": "deno check src/main.tsx vite.config.ts src/worker/mapRenderer.ts src/worker/mapStatsUpdater.ts src/worker/pngParser.ts src/worker/prefabsFilter.ts src/desktop/main.ts src/desktop/server.worker.ts src/desktop/build-exe.ts"
+    "check": "deno check src/main.tsx vite.config.ts src/worker/mapRenderer.ts src/worker/mapStatsUpdater.ts src/worker/pngParser.ts src/worker/prefabsFilter.ts src/desktop/main.ts src/desktop/debug.ts src/desktop/server.worker.ts src/desktop/viteDevServer.ts src/desktop/build-exe.ts"
   },
   "compilerOptions": {
     "jsx": "react-jsx",
@@ -55,6 +55,8 @@
   ],
   "imports": {
     "@webview/webview": "jsr:@webview/webview@0.9.0",
+    "csv-parse": "npm:csv-parse@^5.6.0",
+    "fast-xml-parser": "npm:fast-xml-parser@^4.5.7",
     "react": "npm:react@^18.2.0",
     "react/": "npm:/react@^18.2.0/",
     "react-dom": "npm:react-dom@^18.2.0",

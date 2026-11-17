@@ -8,6 +8,10 @@ class PrefabsFilterProxy {
     this.worker.value.postMessage(request);
   }
 
+  refresh() {
+    this.worker.value.postMessage({ refresh: true } satisfies PrefabsFilterRequest);
+  }
+
   addUpdateListener(listener: (response: PrefabsFilterResult) => void) {
     const _listener = ({ data }: MessageEvent<PrefabsFilterResult>) => listener(data);
     this.worker.value.addEventListener('message', _listener);

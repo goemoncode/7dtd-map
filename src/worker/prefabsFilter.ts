@@ -21,6 +21,10 @@ prefabs.addUpdateListener((result) => {
 });
 
 onmessage = ({ data }: MessageEvent<PrefabsFilterRequest>) => {
+  if (data.refresh) {
+    prefabs.refresh(fetchPrefabProperties());
+    return;
+  }
   if (prefabs.isUpdateNeeded(data)) {
     console.log('[prefabsFilter] onmessage:', data);
     Object.assign(prefabs, data).update();

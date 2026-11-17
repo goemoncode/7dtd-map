@@ -23,8 +23,10 @@
     "npm:bignumber.js@^9.1.2": "9.3.1",
     "npm:bootstrap@^5.3.2": "5.3.8_@popperjs+core@2.11.8",
     "npm:clsx@2": "2.1.1",
+    "npm:csv-parse@^5.6.0": "5.6.0",
     "npm:dexie-react-hooks@^1.1.6": "1.1.7_@types+react@18.3.31_dexie@3.2.7_react@18.3.1",
     "npm:dexie@^3.2.4": "3.2.7",
+    "npm:fast-xml-parser@^4.5.7": "4.5.7",
     "npm:pngjs@7": "7.0.0",
     "npm:prettier@*": "3.9.9",
     "npm:react-bootstrap@^2.9.0": "2.10.10_@types+react@18.3.31_react@18.3.1_react-dom@18.3.1",
@@ -898,6 +900,9 @@
     "csstype@3.2.3": {
       "integrity": "sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ=="
     },
+    "csv-parse@5.6.0": {
+      "integrity": "sha512-l3nz3euub2QMg5ouu5U09Ew9Wf6/wQ8I++ch1loQ0ljmzhmfZYrH9fflS22i/PQEvsPvxCwxgz5q7UB8K1JO4Q=="
+    },
     "debug@4.4.3": {
       "integrity": "sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==",
       "dependencies": [
@@ -993,6 +998,13 @@
     },
     "fast-shallow-equal@1.0.0": {
       "integrity": "sha512-HPtaa38cPgWvaCFmRNhlc6NG7pv6NUHqjPgVAkWGoB9mQMwYB27/K0CvOM5Czy+qpT3e8XJ6Q4aPAnzpNpzNaw=="
+    },
+    "fast-xml-parser@4.5.7": {
+      "integrity": "sha512-a6Qh1RMCNbSrU1+sAyAAZH3rTe+OaWJbNZIq0S+ifZciUUOQtlVxBJwoTUE2bYhysmG/RYyI5WJFIKdBahJdrQ==",
+      "dependencies": [
+        "strnum"
+      ],
+      "bin": true
     },
     "fastest-stable-stringify@2.0.2": {
       "integrity": "sha512-bijHueCGd0LqqNK9b5oCMHc0MluJAx0cwqASgbWMvkO01lCYgIhacVRLcaDz3QnyYIRNJRDwMb41VuT6pHJ91Q=="
@@ -1472,6 +1484,9 @@
         "stacktrace-gps"
       ]
     },
+    "strnum@1.1.2": {
+      "integrity": "sha512-vrN+B7DBIoTTZjnPNewwhx6cBA/H+IS7rfW68n7XxC1y7uoiGQBxaKzqucGUgavX15dJgiGztLJ8vxuEzwqBdA=="
+    },
     "stylis@4.4.0": {
       "integrity": "sha512-5Z9ZpRzfuH6l/UAvCPAPUo3665Nk2wLaZU3x+TLHKVzIz33+sbJqbtrYoC3KD4/uVOr2Zp+L0LySezP9OHV9yA=="
     },
@@ -1584,8 +1599,10 @@
       "npm:bignumber.js@^9.1.2",
       "npm:bootstrap@^5.3.2",
       "npm:clsx@2",
+      "npm:csv-parse@^5.6.0",
       "npm:dexie-react-hooks@^1.1.6",
       "npm:dexie@^3.2.4",
+      "npm:fast-xml-parser@^4.5.7",
       "npm:pngjs@7",
       "npm:react-bootstrap@^2.9.0",
       "npm:react-dom@^18.2.0",

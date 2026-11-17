@@ -40,7 +40,11 @@ export interface FilterConditions {
   blocksUsedFilter: string;
 }
 
-export type PrefabsFilterRequest = Partial<Pick<PrefabsFilter, 'prefabs' | 'language' | 'markerCoords' | keyof FilterConditions>>;
+export type PrefabsFilterRequest =
+  & Partial<
+    Pick<PrefabsFilter, 'prefabs' | 'language' | 'markerCoords' | keyof FilterConditions>
+  >
+  & { refresh?: boolean };
 
 export interface PrefabsFilterResult {
   status: string;
@@ -71,7 +75,7 @@ export class PrefabsFilter implements FilterConditions {
 
   constructor(
     private prefabProperties: PrefabPropertiesAwaiter,
-    private labels: LabelHolder
+    private labels: LabelHolder,
   ) {
     this.blockPrefabIndex = buildBlockPrefabIndex(prefabProperties);
   }
@@ -88,7 +92,14 @@ export class PrefabsFilter implements FilterConditions {
     this.listeners.push(listener);
   }
 
-  isUpdateNeeded({ markerCoords, difficultyFilter, ...others }: PrefabsFilterRequest) {
+  refresh(prefabProperties: PrefabPropertiesAwaiter) {
+    this.prefabProperties = prefabProperties;
+    this.blockPrefabIndex = buildBlockPrefabIndex(this.prefabProperties);
+    this.labels.refresh();
+    this.update();
+  }
+
+  isUpdateNeeded({ markerCoords, difficultyFilter, refresh: _refresh, ...others }: PrefabsFilterRequest) {
     return (
       (markerCoords !== undefined && !shallowEqualLeft(markerCoords, this.markerCoords)) ||
       (difficultyFilter !== undefined && !shallowEqualLeftStrict(difficultyFilter, this.difficultyFilter)) ||
@@ -114,7 +125,7 @@ export class PrefabsFilter implements FilterConditions {
         new PrefabNameMatchFilter(this.prefabNameFilter, this.labels),
         new BlocksUsedMatchFilter(this.blocksUsedFilter, this.labels, this.blockPrefabIndex),
         new DistanceFilter(this.markerCoords),
-      ].map((f) => f.createFilter())
+      ].map((f) => f.createFilter()),
     );
     return prefabs.flatMap<MatchedPrefab>((prefab: MapDecoration | null) => {
       return filters.reduce((prefab, filter) => (prefab ? filter(prefab) : null), prefab) ?? [];

@@ -39,13 +39,6 @@ export interface Localization {
   labels: LabelMap;
 }
 
-export interface ExternalDataVersion {
-  kind: 'prefabs' | 'localization';
-  url: string;
-  lang: string;
-  version: string;
-}
-
 export interface PrefabInfo {
   name: string;
   modName?: string;

@@ -10,11 +10,11 @@ export interface MapInfo {
 }
 
 export const biomeColors = new Map([
-  [0xffffff, 'Snow'],
   [0x004000, 'Pine Forest'],
-  [0xffe477, 'Desert'],
-  [0xffa800, 'Wasteland'],
   [0xba00ff, 'Burnt Forest'],
+  [0xffe477, 'Desert'],
+  [0xffffff, 'Snow'],
+  [0xffa800, 'Wasteland'],
 ]);
 
 export function parseMapInfoXml(xml: string): MapInfo {

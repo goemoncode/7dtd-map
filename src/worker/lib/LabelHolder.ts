@@ -27,6 +27,11 @@ export class LabelHolder {
     this.labelsPromise = this.labelsFetcher(this.lang);
   }
 
+  refresh() {
+    this.labelsPromise = this.labelsFetcher(this.lang);
+    this.fallbackLabelsPromise = this.labelsFetcher(this.fallbackLang);
+  }
+
   async getMapper(): Promise<LabelMapper> {
     const [labels, fallbackLabels] = await Promise.all([this.labelsPromise, this.fallbackLabelsPromise]);
     return (key: string) => labels?.[key] || fallbackLabels?.[key] || '';
